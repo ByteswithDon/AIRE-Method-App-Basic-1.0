@@ -26,19 +26,19 @@ const C = {
 const DIMENSIONS = [
   {
     letter: "A", name: "Approach", desc: "Vision & strategic stance", color: "#ADE1FB",
-    full: "How your organization defines its strategic direction for technology adoption — including executive alignment, documented goals, and a clear vision for what responsible technology use looks like in practice.",
+    full: "This is about how your organization has defined where it's headed with technology. Do you have a documented strategy? Is leadership aligned on what responsible technology use actually looks like? That's what Approach is measuring.",
   },
   {
     letter: "I", name: "Implementation", desc: "Deployment & tooling", color: "#266CA9",
-    full: "How technology tools are selected, deployed, and integrated into day-to-day workflows — covering infrastructure readiness, vendor evaluation, and the structured processes that turn decisions into working systems.",
+    full: "This is where the rubber meets the road. Are tools actually deployed and in use? Is there a real process for evaluating and selecting them? Implementation is about whether decisions are turning into working systems that people actually use.",
   },
   {
     letter: "R", name: "Responsibility", desc: "Ethics & privacy", color: "#ADE1FB",
-    full: "How your organization governs the ethical and compliant use of technology — including acceptable use policies, data privacy practices, bias monitoring, and the oversight structures that keep technology use accountable.",
+    full: "Technology use comes with real obligations. Responsibility looks at whether your organization has policies in place, handles data with care, and has oversight structures that keep things accountable. It's not just compliance. It's how you build trust.",
   },
   {
     letter: "E", name: "Enablement", desc: "Staff capacity & culture", color: "#266CA9",
-    full: "How your organization builds the skills, roles, and culture needed to sustain technology adoption — from literacy programs and internal champions to the psychological safety that allows teams to experiment and learn.",
+    full: "Tools don't adopt themselves. Enablement is about whether your people have the training, the support, and the confidence to actually use what's been put in front of them. That means programs, champions, and a culture where it's okay to try things and figure it out.",
   },
 ];
 
