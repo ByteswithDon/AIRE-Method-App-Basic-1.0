@@ -135,41 +135,81 @@ export default function ResultsPage() {
           })}
         </div>
 
-        {/* CTA */}
+        {/* CTA block */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.8 }}
-          className="rounded-2xl p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          className="rounded-2xl p-8 flex flex-col gap-6"
           style={{ background: "rgba(173,225,251,0.05)", border: `1px solid rgba(173,225,251,0.14)` }}>
+
           <div>
-            <p className="text-sm font-bold mb-1">Want to learn more about the AIRE Framework?</p>
+            <p className="text-sm font-bold mb-1">What&rsquo;s next?</p>
             <p className="text-xs font-medium" style={{ color: C.muted }}>
-              Download the Companion Guide for the full methodology, assessment cells, and 30-day action pathway.
+              Explore the full AIRE methodology, request the facilitation guide, or get in touch to learn more.
             </p>
           </div>
-          <div className="flex gap-3 flex-wrap shrink-0">
-            <Link href="/assessment"
-              className="text-sm font-bold px-5 py-3 rounded-xl transition-all focus-ring"
-              style={{ background: "rgba(173,225,251,0.07)", color: C.muted, border: `1px solid ${C.border}` }}>
-              Retake Assessment
-            </Link>
+
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            {/* Download */}
             <a href="/AIRE-Companion-Guide.pdf" download
-              className="text-sm font-extrabold px-6 py-3 rounded-xl transition-all focus-ring inline-flex items-center gap-2"
+              className="inline-flex items-center justify-center gap-2 text-sm font-extrabold px-6 py-3 rounded-xl transition-all focus-ring"
               style={{ background: C.accent, color: C.bg }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.background = "#C8ECFD";
                 (e.currentTarget as HTMLElement).style.boxShadow = "0 0 28px rgba(173,225,251,0.35)";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
               }}
               onMouseLeave={e => {
                 (e.currentTarget as HTMLElement).style.background = C.accent;
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
               }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Download Guide
+              <DownloadIcon />
+              Download the Facilitation Guide
+            </a>
+
+            {/* Request */}
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Facilitation%20Guide%20Request&body=Hi%20Lyndonia%2C%0A%0AI%20completed%20the%20AIRE%20GAP%20Assessment%20and%20would%20like%20to%20request%20the%20facilitation%20guide.%0A%0A"
+              className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 rounded-xl transition-all focus-ring"
+              style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)` }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.15)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(173,225,251,0.12)";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.08)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+              }}>
+              <MailIcon />
+              Request the Facilitation Guide
+            </a>
+
+            {/* Learn More / Contact */}
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Learn%20More&body=Hi%20Lyndonia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20the%20AIRE%20Method.%0A%0A"
+              className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 rounded-xl transition-all focus-ring"
+              style={{ background: "rgba(173,225,251,0.04)", color: C.muted, border: `1px solid ${C.border}` }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.color = "#fff";
+                (e.currentTarget as HTMLElement).style.border = `1px solid rgba(173,225,251,0.2)`;
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.color = C.muted;
+                (e.currentTarget as HTMLElement).style.border = `1px solid ${C.border}`;
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+              }}>
+              Learn More — Contact Lyndonia
             </a>
           </div>
+
+          <p className="text-xs font-medium" style={{ color: C.subtle }}>
+            Questions? Reach out at{" "}
+            <a href="mailto:lyndoniamckenzie@gmail.com"
+              className="underline underline-offset-2 hover:opacity-80 transition-opacity"
+              style={{ color: C.muted }}>
+              lyndoniamckenzie@gmail.com
+            </a>
+          </p>
         </motion.div>
       </main>
 
@@ -190,5 +230,24 @@ export default function ResultsPage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function DownloadIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </svg>
   );
 }

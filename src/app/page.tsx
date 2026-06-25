@@ -317,18 +317,51 @@ export default function Home() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="relative z-10 px-6 md:px-12 py-6 flex flex-wrap items-center justify-between gap-4 text-xs"
-        style={{ borderTop: `1px solid ${C.border}`, color: C.subtle }}>
-        <span className="font-semibold">AIRE™ — AI Readiness &amp; Implementation Evaluation</span>
-        <div className="flex items-center gap-4">
-          <a href="/AIRE-Companion-Guide.pdf" download
-            className="hover:text-white transition-colors focus-ring flex items-center gap-1.5 font-semibold">
-            <DownloadIcon size={12} /> Download Companion Guide
-          </a>
-          <span className="px-2.5 py-0.5 rounded-full font-extrabold tracking-wider uppercase"
-            style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.18)` }}>
-            Prototype
+      <footer className="relative z-10 px-6 md:px-12 py-8"
+        style={{ borderTop: `1px solid ${C.border}` }}>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <span className="text-xs font-semibold" style={{ color: C.subtle }}>
+            AIRE™ — AI Readiness &amp; Implementation Evaluation
           </span>
+          <div className="flex flex-wrap gap-3">
+            <a href="/AIRE-Companion-Guide.pdf" download
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-lg transition-all focus-ring"
+              style={{ background: C.accent, color: C.bg }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = "#C8ECFD";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(173,225,251,0.3)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = C.accent;
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}>
+              <DownloadIcon size={12} /> Download Facilitation Guide
+            </a>
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Facilitation%20Guide%20Request&body=Hi%20Lyndonia%2C%0A%0AI%27d%20like%20to%20request%20the%20AIRE%20facilitation%20guide.%0A%0A"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-lg transition-all focus-ring"
+              style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)` }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.15)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.08)";
+              }}>
+              Request Facilitation Guide
+            </a>
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Learn%20More"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg transition-all focus-ring"
+              style={{ color: C.muted, border: `1px solid ${C.border}` }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.color = "#fff";
+                (e.currentTarget as HTMLElement).style.border = `1px solid rgba(173,225,251,0.2)`;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.color = C.muted;
+                (e.currentTarget as HTMLElement).style.border = `1px solid ${C.border}`;
+              }}>
+              Learn More — lyndoniamckenzie@gmail.com
+            </a>
+          </div>
         </div>
       </footer>
     </div>
