@@ -2,30 +2,30 @@
 
 **A framework and prototype web app for guiding inclusive technology adoption in any organization, from evaluation to recommendation.**
 
-AIRE turns technology adoption into a shared, structured, and inclusive process — so deciding *whether* and *how* to adopt a tool isn't left only to the technical experts in the room.
+AIRE turns technology adoption into a shared, structured, and inclusive process. Deciding whether and how to adopt a tool shouldn't fall only to the technical experts in the room.
 
 ---
 
 ## Why AIRE
 
-Most technology-adoption decisions skip the most important question — **why are we doing this?** — and they tend to happen among a small group of technical experts, leaving the people who will actually use the tools without a real voice.
+Most technology adoption decisions skip the most important question: why are we doing this? They tend to happen among a small group of technical people, which leaves the folks who will actually use the tools without a real voice in the process.
 
-AIRE exists to change that. You shouldn't have to be a technologist to have a valid opinion about the technology that shapes your work. AIRE creates a structured way to surface real organizational needs, build conversation and community around them, and bring everyone — technical and non-technical — into the decision.
+AIRE exists to change that. You shouldn't have to be a technologist to have a valid opinion about the technology that shapes your work. AIRE gives organizations a structured way to surface real needs, build conversation and community around them, and bring everyone, technical and non-technical, into the decision.
 
 ## What AIRE Stands For
 
 AIRE is a four-phase methodology:
 
-- **A — Approach** · Observe, diagnose, and evaluate *before* a single tool is selected or platform is built.
-- **I — Implementation** · Analyze findings, decide, and build with precision — every decision traceable back to the Approach.
-- **R — Responsibility** · Accountability at every stage, with documentation that outlives the engagement.
-- **E — Enablement** · Train the team and hand off with clarity. Build systems people can sustain. The goal is capacity, not dependency.
+- **A, Approach** · Observe, diagnose, and evaluate before a single tool is selected or platform is built.
+- **I, Implementation** · Analyze findings, decide, and build with precision. Every decision traces back to the Approach.
+- **R, Responsibility** · Accountability at every stage, with documentation that outlives the engagement.
+- **E, Enablement** · Train the team and hand off with clarity. Build systems people can sustain. The goal is capacity, not dependency.
 
 ## From Spreadsheet to App
 
-AIRE began as an evaluation tool — a shareable spreadsheet (Google Sheets / Microsoft Excel) paired with an insights and facilitation guide I developed and used with real stakeholders.
+AIRE began as an evaluation tool. It was a shareable spreadsheet (Google Sheets or Microsoft Excel) paired with a facilitation guide I developed and used with real stakeholders across different sectors.
 
-This app turns that experience into something you can move through online: you work from the framework, respond to guided prompts, and the tool captures your inputs and surfaces tailored recommendations.
+This app turns that experience into something you can move through online. You work from the framework, respond to guided prompts, and the tool captures your inputs and surfaces tailored recommendations.
 
 ## How It Works
 
@@ -36,15 +36,15 @@ This app turns that experience into something you can move through online: you w
 
 ## Status
 
-This is a working **prototype** — a proof of concept that demonstrates how the AIRE Method can become a tool organizations actually use to:
+This is a working **prototype**, a proof of concept that shows how the AIRE Method can become a tool organizations actually use to:
 
-- drive a structured technology-adoption process,
+- drive a structured technology adoption process,
 - build conversation and community around true organizational needs, and
 - give non-technical stakeholders a real seat at the table.
 
 ## Background
 
-AIRE grew out of my work in platform and technology operations. It was shared with educators, leaders, and technology stakeholders at the **Learning Forward Winter Conference**, where the response was strong — attendees saw clear, practical value in a structured, inclusive approach to adoption.
+AIRE grew out of my work in platform and technology operations. I shared it with educators, leaders, and technology stakeholders at the **Learning Forward Winter Conference**, and the response was strong. People saw real, practical value in having a structured, inclusive way to approach adoption decisions.
 
 ---
 

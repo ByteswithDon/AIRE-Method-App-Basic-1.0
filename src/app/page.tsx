@@ -246,7 +246,7 @@ export default function Home() {
 
           <motion.p {...fade(0.26)} className="text-base leading-relaxed max-w-md mb-10 font-medium" style={{ color: C.muted }}>
             Measure your organization&rsquo;s readiness across the four dimensions
-            of responsible AI adoption and get a structured 30-day action pathway.
+            of technology adoption and get a structured 30-day correction pathway.
           </motion.p>
 
           <motion.div {...fade(0.32)}>
@@ -337,7 +337,7 @@ export default function Home() {
               }}>
               <DownloadIcon size={12} /> Download Facilitation Guide
             </a>
-            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Facilitation%20Guide%20Request&body=Hi%20Lyndonia%2C%0A%0AI%27d%20like%20to%20request%20the%20AIRE%20facilitation%20guide.%0A%0A"
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Request%20for%20More%20Information&body=Hi%20Lyndonia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20the%20AIRE%20Method.%0A%0A"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-4 py-2 rounded-lg transition-all focus-ring"
               style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)` }}
               onMouseEnter={e => {
@@ -346,20 +346,7 @@ export default function Home() {
               onMouseLeave={e => {
                 (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.08)";
               }}>
-              Request Facilitation Guide
-            </a>
-            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Learn%20More"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg transition-all focus-ring"
-              style={{ color: C.muted, border: `1px solid ${C.border}` }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.color = "#fff";
-                (e.currentTarget as HTMLElement).style.border = `1px solid rgba(173,225,251,0.2)`;
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.color = C.muted;
-                (e.currentTarget as HTMLElement).style.border = `1px solid ${C.border}`;
-              }}>
-              Learn More — lyndoniamckenzie@gmail.com
+              Request More Information
             </a>
           </div>
         </div>

@@ -92,7 +92,7 @@ export default function AssessmentPage() {
         {/* Demo notice */}
         <div className="px-6 md:px-10 py-2 text-xs font-medium"
           style={{ background: "rgba(173,225,251,0.03)", borderBottom: `1px solid ${C.border}`, color: C.subtle }}>
-          Demo mode — responses are stored in your browser session only and will not be saved.
+          Demo mode. Responses are stored in your browser session only and will not be saved.
         </div>
       </header>
 

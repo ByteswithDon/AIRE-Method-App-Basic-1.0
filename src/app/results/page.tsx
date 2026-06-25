@@ -70,7 +70,7 @@ export default function ResultsPage() {
         </nav>
         <div className="px-6 md:px-12 py-2 text-xs font-medium"
           style={{ background: "rgba(173,225,251,0.03)", borderBottom: `1px solid ${C.border}`, color: C.subtle }}>
-          Demo mode — these results are session-only and have not been saved to any database.
+          Demo mode. These results are session-only and have not been saved to any database.
         </div>
       </header>
 
@@ -143,11 +143,11 @@ export default function ResultsPage() {
           <div>
             <p className="text-sm font-bold mb-1">What&rsquo;s next?</p>
             <p className="text-xs font-medium" style={{ color: C.muted }}>
-              Explore the full AIRE methodology, request the facilitation guide, or get in touch to learn more.
+              Download the companion guide or reach out directly. I&rsquo;m happy to answer questions, share more about the methodology, or talk through what this could look like for your organization.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             {/* Download */}
             <a href="/AIRE-Companion-Guide.pdf" download
               className="inline-flex items-center justify-center gap-2 text-sm font-extrabold px-6 py-3 rounded-xl transition-all focus-ring"
@@ -166,8 +166,8 @@ export default function ResultsPage() {
               Download the Facilitation Guide
             </a>
 
-            {/* Request */}
-            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Facilitation%20Guide%20Request&body=Hi%20Lyndonia%2C%0A%0AI%20completed%20the%20AIRE%20GAP%20Assessment%20and%20would%20like%20to%20request%20the%20facilitation%20guide.%0A%0A"
+            {/* Request more info */}
+            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Request%20for%20More%20Information&body=Hi%20Lyndonia%2C%0A%0AI%20just%20completed%20the%20AIRE%20GAP%20Assessment%20and%20I%27d%20love%20to%20learn%20more.%0A%0A"
               className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 rounded-xl transition-all focus-ring"
               style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)` }}
               onMouseEnter={e => {
@@ -181,29 +181,12 @@ export default function ResultsPage() {
                 (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
               }}>
               <MailIcon />
-              Request the Facilitation Guide
-            </a>
-
-            {/* Learn More / Contact */}
-            <a href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Learn%20More&body=Hi%20Lyndonia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20the%20AIRE%20Method.%0A%0A"
-              className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 rounded-xl transition-all focus-ring"
-              style={{ background: "rgba(173,225,251,0.04)", color: C.muted, border: `1px solid ${C.border}` }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.color = "#fff";
-                (e.currentTarget as HTMLElement).style.border = `1px solid rgba(173,225,251,0.2)`;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.color = C.muted;
-                (e.currentTarget as HTMLElement).style.border = `1px solid ${C.border}`;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              }}>
-              Learn More — Contact Lyndonia
+              Request More Information
             </a>
           </div>
 
           <p className="text-xs font-medium" style={{ color: C.subtle }}>
-            Questions? Reach out at{" "}
+            You can also reach me directly at{" "}
             <a href="mailto:lyndoniamckenzie@gmail.com"
               className="underline underline-offset-2 hover:opacity-80 transition-opacity"
               style={{ color: C.muted }}>
