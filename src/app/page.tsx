@@ -303,7 +303,7 @@ export default function Home() {
         style={{ borderTop: `1px solid ${C.border}` }}>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <span className="text-xs font-semibold" style={{ color: C.subtle }}>
-            AIRE™ · AI Readiness &amp; Implementation Evaluation
+            AIRE™ · Technology Readiness &amp; Implementation Evaluation
           </span>
           <div className="flex flex-wrap gap-3">
             <a href="/AIRE-Companion-Guide.pdf" download
