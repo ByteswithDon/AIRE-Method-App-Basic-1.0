@@ -9,9 +9,9 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "AIRE™ — AI Governance GAP Assessment",
+  title: "AIRE™ · Technology Readiness GAP Assessment",
   description:
-    "Measure your organization's AI readiness across the four dimensions of responsible AI adoption.",
+    "Measure your organization's readiness across the four dimensions of responsible technology adoption.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -214,7 +214,7 @@ export default function Home() {
         {/* Left */}
         <div className="flex flex-col justify-center px-6 md:px-12 py-20 max-w-2xl">
           <motion.p {...fade(0.1)} className="text-xs font-extrabold tracking-[0.24em] uppercase mb-6" style={{ color: C.accent }}>
-            AI Governance Diagnostic
+            Technology Readiness Diagnostic
           </motion.p>
 
           <motion.h1 {...fade(0.18)}
