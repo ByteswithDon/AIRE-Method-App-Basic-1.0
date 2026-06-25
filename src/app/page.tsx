@@ -76,7 +76,7 @@ export default function Home() {
             </button>
 
             <a
-              href="https://www.linkedin.com/in/lyndonia-jane"
+              href="https://www.linkedin.com/in/lyndonia/"
               target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-sm font-semibold transition-colors focus-ring"
               style={{ color: C.muted }}
@@ -135,10 +135,10 @@ export default function Home() {
               <div className="px-6 md:px-12 py-8 max-w-3xl">
                 <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.accent }}>About</p>
                 <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                  Microsoft 365 and SharePoint administrator, LMS administrator, and migration specialist
-                  with 10+ years leading SharePoint strategy and building the infrastructure behind enterprise
-                  learning and collaboration platforms. Designs information architecture and permissions models,
-                  creates platform schematics, and advises leadership on technology selection and configuration.
+                  I&rsquo;m a Microsoft 365 and SharePoint administrator, LMS administrator, and migration specialist
+                  with 10+ years helping organizations build the infrastructure behind enterprise learning and
+                  collaboration platforms. I love working with teams that know something needs to change but
+                  aren&rsquo;t quite sure where to start or which tools will actually serve them well.
                 </p>
                 <button
                   onClick={() => setBioOpen(!bioOpen)}
@@ -158,9 +158,9 @@ export default function Home() {
                       className="overflow-hidden"
                     >
                       <div className="pt-5 space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                        <p>Leads infrastructure development and migration for learning management systems, paired with internal team enablement, technical prototyping, and the adoption, training, and rollout documentation that makes new platforms stick.</p>
-                        <p>Uses AI-enabled prototyping — schematics, mockups, and working proofs of concept — to model features before rollout and bridge technical and non-technical teams. Grounds platform decisions in deep research: learner-engagement and usability studies, A/B testing, and post-release review.</p>
-                        <p>Hands-on across the M365 stack (SharePoint, Teams, Learn 365 / Zensai) and a range of LMS platforms and API integrations.</p>
+                        <p>I&rsquo;m especially interested in working with organizations that are navigating infrastructure buildouts, enablement, and training, and that are trying to figure out which tech stacks will actually fit how they work. That question comes up constantly and it deserves a real process, not just a vendor recommendation.</p>
+                        <p>I lead infrastructure development and migrations for learning management systems, build out governance frameworks, and create the training and rollout documentation that helps teams actually adopt what gets built. I also use AI-enabled prototyping to model features and bridge the gap between technical and non-technical stakeholders before anything goes live.</p>
+                        <p>I&rsquo;m hands-on across the M365 stack (SharePoint, Teams, Learn 365, Zensai) and comfortable across a range of LMS platforms and API integrations.</p>
                         <div className="pt-3">
                           <p className="text-xs font-extrabold tracking-wide uppercase text-white mb-3">Core Skills</p>
                           <div className="flex flex-wrap gap-2">
@@ -191,7 +191,7 @@ export default function Home() {
             Prototype
           </span>
           <span style={{ color: C.subtle }}>
-            Demonstration only — responses are <strong className="text-white font-bold">not saved</strong>. No database is connected.
+            Demonstration only. Responses are <strong className="text-white font-bold">not saved</strong> and no database is connected.
           </span>
         </div>
         <button
@@ -217,10 +217,10 @@ export default function Home() {
             <div className="px-6 md:px-12 py-8 max-w-3xl">
               <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: "#266CA9" }}>Context &amp; Intent</p>
               <div className="space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                <p>The AIRE Method grew out of a real problem I kept encountering: decision-makers in flat organizations adopting technology without a shared process — leading to duplicate subscriptions, misaligned rollouts, and teams that never fully adopted the tools.</p>
-                <p>It started as a Google Sheets evaluation tool used to facilitate conversations with stakeholders. After presenting it at the <strong className="text-white">Learning Forward Winter Conference</strong> and watching leaders across sectors immediately recognize the gap it was solving, I decided to build a proper web-based version.</p>
-                <p>This prototype demonstrates how the framework translates into an interactive digital tool. In a production version, responses would be stored in Supabase and the scoring engine would generate AI-assisted recommendations. <strong className="text-white">This demo shows the UX and logic — not a live backend.</strong></p>
-                <p>Built using AI-enabled prototyping (Claude + Claude Code) paired with my own platform architecture background — exactly the approach I use to bridge technical and non-technical teams in my day-to-day work.</p>
+                <p>The AIRE Method grew out of a real problem I kept running into: teams in flat organizations adopting technology without a shared process, which meant duplicate subscriptions, misaligned rollouts, and people who never really got brought along.</p>
+                <p>It started as a Google Sheets evaluation tool I used to facilitate conversations with stakeholders. After presenting it at the <strong className="text-white">Learning Forward Winter Conference</strong> and watching leaders across sectors immediately recognize the gap it was filling, I decided to build it into something you could actually move through online.</p>
+                <p>This prototype shows how the framework works as an interactive tool. In a full production version, responses would live in Supabase and the scoring engine would generate tailored recommendations. <strong className="text-white">This demo is about the experience and the logic, not a live backend.</strong></p>
+                <p>I built it using AI-enabled prototyping (Claude + Claude Code) alongside my own platform and architecture background, which is exactly how I work with teams every day.</p>
               </div>
             </div>
           </motion.div>
@@ -246,7 +246,7 @@ export default function Home() {
 
           <motion.p {...fade(0.26)} className="text-base leading-relaxed max-w-md mb-10 font-medium" style={{ color: C.muted }}>
             Measure your organization&rsquo;s readiness across the four dimensions
-            of responsible AI adoption — and get a structured 30-day action pathway.
+            of responsible AI adoption and get a structured 30-day action pathway.
           </motion.p>
 
           <motion.div {...fade(0.32)}>
@@ -321,7 +321,7 @@ export default function Home() {
         style={{ borderTop: `1px solid ${C.border}` }}>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <span className="text-xs font-semibold" style={{ color: C.subtle }}>
-            AIRE™ — AI Readiness &amp; Implementation Evaluation
+            AIRE™ · AI Readiness &amp; Implementation Evaluation
           </span>
           <div className="flex flex-wrap gap-3">
             <a href="/AIRE-Companion-Guide.pdf" download
