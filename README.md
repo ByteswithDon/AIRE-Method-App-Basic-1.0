@@ -1,89 +1,51 @@
-# AIRE™ Method App — GAP Assessment Tool
+# AIRE Method
 
-**A web-based AI governance diagnostic built on a methodology I developed to solve a real organizational problem.**
+**A framework and prototype web app for guiding inclusive technology adoption in any organization, from evaluation to recommendation.**
 
-> **Prototype Notice:** This is a demonstration build. The assessment UI and scoring logic are fully functional, but responses are stored in browser session storage only. A production version would connect to a Supabase backend for data persistence and AI-assisted recommendations.
-
----
-
-## What Is the AIRE Method?
-
-AIRE stands for **Approach · Implementation · Responsibility · Enablement** — a four-dimension framework for evaluating an organization's readiness to adopt new technology, specifically AI tools.
-
-I developed it because I kept encountering the same pattern: organizations in flat structures — where colleagues carry leadership responsibilities but still report to directors — making technology adoption decisions in silos. The result was duplicate subscriptions, misaligned rollouts, underutilized tools, and teams that were never fully brought along.
-
-The problem isn't that people don't care about the tools. It's that there's no shared process for deciding *whether* a tool is actually needed, *who* needs to be involved, and *what* successful adoption looks like before anyone signs a contract.
-
-AIRE gives organizations a structured pathway to work through that together — without requiring anyone to be a technical expert to participate meaningfully.
+AIRE turns technology adoption into a shared, structured, and inclusive process — so deciding *whether* and *how* to adopt a tool isn't left only to the technical experts in the room.
 
 ---
 
-## Origin Story
+## Why AIRE
 
-This started as a Google Sheets evaluation tool — a structured spreadsheet I used to facilitate technology adoption conversations with stakeholders across sectors. I designed it to surface the real questions that tend to get skipped: Does this tool match our strategic approach? Have we thought through the responsibility and governance implications? Do our staff have the capacity to actually use this well?
+Most technology-adoption decisions skip the most important question — **why are we doing this?** — and they tend to happen among a small group of technical experts, leaving the people who will actually use the tools without a real voice.
 
-I've had the opportunity to share the AIRE Method with stakeholders, technology leaders, and practitioners at the **Learning Forward Winter Conference**, where the reception was genuinely encouraging. People recognized the gap it was solving immediately — and several wanted to know how to bring it back to their organizations.
+AIRE exists to change that. You shouldn't have to be a technologist to have a valid opinion about the technology that shapes your work. AIRE creates a structured way to surface real organizational needs, build conversation and community around them, and bring everyone — technical and non-technical — into the decision.
 
-That response pushed me to take the spreadsheet-and-facilitation-guide model and build it into something you can actually move through online.
+## What AIRE Stands For
 
----
+AIRE is a four-phase methodology:
 
-## What This App Does
+- **A — Approach** · Observe, diagnose, and evaluate *before* a single tool is selected or platform is built.
+- **I — Implementation** · Analyze findings, decide, and build with precision — every decision traceable back to the Approach.
+- **R — Responsibility** · Accountability at every stage, with documentation that outlives the engagement.
+- **E — Enablement** · Train the team and hand off with clarity. Build systems people can sustain. The goal is capacity, not dependency.
 
-The app walks users through a **12-question diagnostic** organized across the AIRE 4×3 matrix:
+## From Spreadsheet to App
 
-| Dimension | Focus |
-|---|---|
-| **A — Approach** | Strategic vision, leadership alignment, success metrics |
-| **I — Implementation** | Production deployment, infrastructure, vendor evaluation |
-| **R — Responsibility** | Governance policies, privacy, bias monitoring |
-| **E — Enablement** | Training, internal champions, learning culture |
+AIRE began as an evaluation tool — a shareable spreadsheet (Google Sheets / Microsoft Excel) paired with an insights and facilitation guide I developed and used with real stakeholders.
 
-Each question is scored on a 1–5 scale. The scoring engine calculates a maturity score per dimension and an overall readiness score, mapped to five maturity levels: **Initial → Emerging → Developing → Established → Leading**.
+This app turns that experience into something you can move through online: you work from the framework, respond to guided prompts, and the tool captures your inputs and surfaces tailored recommendations.
 
-Results include a per-dimension breakdown and a download of the **AIRE Companion Guide** — the facilitation document that explains the methodology, assessment cells, and 30-day action pathway in full.
+## How It Works
 
----
+- **Guided experience** · A step-by-step flow that walks an organization through the four AIRE phases.
+- **Backend** · Supabase, using SQL queries to capture and store inputs.
+- **Recommendation logic** · In-app logic evaluates responses against the uploaded framework to generate adoption recommendations.
+- **Frontend / Deployment** · Next.js · Vercel
 
-## Why I Built It This Way
+## Status
 
-This project is itself a demonstration of how I work.
+This is a working **prototype** — a proof of concept that demonstrates how the AIRE Method can become a tool organizations actually use to:
 
-I used **AI-enabled prototyping** (Claude + Claude Code) to take a methodology I'd developed and tested in real facilitation settings and turn it into a working web application. This is exactly the approach I advocate for and use professionally: use AI tools to close the gap between concept and working proof-of-concept, so that technical and non-technical stakeholders can see and react to something real — not a slide deck.
+- drive a structured technology-adoption process,
+- build conversation and community around true organizational needs, and
+- give non-technical stakeholders a real seat at the table.
 
-The stack (Next.js, Tailwind, Framer Motion, Supabase on the roadmap) reflects the kind of lightweight, modern infrastructure I use for internal prototyping and platform evaluation work.
+## Background
 
----
-
-## Tech Stack
-
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **Planned backend:** Supabase (PostgreSQL + Row Level Security)
-- **Deployment:** Vercel
-- **Version control:** GitHub
+AIRE grew out of my work in platform and technology operations. It was shared with educators, leaders, and technology stakeholders at the **Learning Forward Winter Conference**, where the response was strong — attendees saw clear, practical value in a structured, inclusive approach to adoption.
 
 ---
 
-## Roadmap
-
-- [ ] Supabase integration — persist responses per session/org
-- [ ] AI-assisted recommendations based on dimension scores and uploaded framework
-- [ ] Organization-level reporting dashboard
-- [ ] Facilitated cohort mode (multiple respondents, aggregate scoring)
-- [ ] Export to PDF report
-
----
-
-## Companion Guide
-
-The AIRE Companion Guide is available as a PDF download within the app. It includes the full methodology, assessment cell descriptions, facilitation notes, and the 30-day action pathway.
-
----
-
-## About
-
-Built by **Lyndonia Jane** — Microsoft 365 and SharePoint administrator, LMS administrator, and migration specialist with 10+ years leading SharePoint strategy and enterprise learning infrastructure.
-
-[LinkedIn](https://www.linkedin.com/in/lyndonia-jane) · [GitHub](https://github.com/byteswithdon)
+*Created by Lyndonia Jane · [lyndonias.cloud](https://lyndonias.cloud)*
