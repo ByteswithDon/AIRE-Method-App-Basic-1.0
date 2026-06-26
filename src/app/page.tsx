@@ -172,8 +172,8 @@ export default function Home() {
         </div>
         <button
           onClick={() => setIntroOpen(!introOpen)}
-          className="font-semibold transition-opacity hover:opacity-70"
-          style={{ color: C.accent }}
+          className="text-sm font-semibold transition-opacity hover:opacity-70"
+          style={{ color: C.accentDark }}
         >
           {introOpen ? "Hide context ↑" : "Why I built this ↓"}
         </button>
