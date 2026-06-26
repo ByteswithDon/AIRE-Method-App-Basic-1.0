@@ -22,11 +22,39 @@ const C = {
   border:  "rgba(173,225,251,0.08)",
 };
 
-// Neumorphic shadow helpers
-const raised = `8px 8px 20px rgba(1,8,45,0.85), -4px -4px 12px rgba(38,108,169,0.12)`;
-const raisedHover = `12px 12px 28px rgba(1,8,45,0.9), -6px -6px 18px rgba(38,108,169,0.18)`;
-const btnShadow = `4px 4px 12px rgba(1,8,45,0.75), -2px -2px 6px rgba(173,225,251,0.12)`;
-const btnShadowHover = `6px 6px 16px rgba(1,8,45,0.85), -3px -3px 8px rgba(173,225,251,0.18), 0 0 24px rgba(173,225,251,0.2)`;
+// Neumorphic shadows — 3-layer kit pattern: subtle near + opposing highlight + deep dark
+const raised = [
+  "2px 2px 5px rgba(1,8,45,0.55)",
+  "-5px -5px 18px rgba(10,30,82,0.5)",
+  "6px 6px 20px rgba(1,8,45,0.82)",
+].join(", ");
+const raisedHover = [
+  "2px 2px 6px rgba(1,8,45,0.6)",
+  "-7px -7px 22px rgba(38,108,169,0.18)",
+  "9px 9px 26px rgba(1,8,45,0.88)",
+].join(", ");
+const btnShadow = [
+  "2px 2px 4px rgba(1,8,45,0.5)",
+  "-3px -3px 10px rgba(10,30,82,0.45)",
+  "4px 4px 12px rgba(1,8,45,0.72)",
+].join(", ");
+const btnShadowHover = [
+  "2px 2px 5px rgba(1,8,45,0.55)",
+  "-4px -4px 14px rgba(38,108,169,0.16)",
+  "6px 6px 18px rgba(1,8,45,0.84)",
+  "0 0 20px rgba(173,225,251,0.14)",
+].join(", ");
+const btnGradient = `linear-gradient(135deg, #C4EAFE 0%, #ADE1FB 45%, #7EC8E3 100%)`;
+const secondaryShadow = [
+  "2px 2px 5px rgba(1,8,45,0.55)",
+  "-3px -3px 10px rgba(10,30,82,0.4)",
+  "4px 4px 12px rgba(1,8,45,0.72)",
+].join(", ");
+const secondaryShadowHover = [
+  "3px 3px 7px rgba(1,8,45,0.6)",
+  "-4px -4px 12px rgba(38,108,169,0.15)",
+  "5px 5px 16px rgba(1,8,45,0.8)",
+].join(", ");
 
 const DIMENSIONS = [
   {
@@ -112,7 +140,7 @@ export default function Home() {
 
             <Link href="/assessment"
               className="text-sm font-extrabold px-5 py-2.5 rounded-full transition-all focus-ring"
-              style={{ background: C.accent, color: C.bg, boxShadow: btnShadow }}
+              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
@@ -167,7 +195,7 @@ export default function Home() {
                           <div className="flex flex-wrap gap-2">
                             {["SharePoint Online","M365 Administration","LMS Administration","Power Automate","Power BI","Information Architecture","Content Migration","WCAG / ADA","API Integration","SCORM / xAPI","SQL","Supabase","Vercel","GitHub","Docebo","Canvas","Moodle","Notion","Scribe","Zendesk"].map(s => (
                               <span key={s} className="text-xs px-3 py-1 rounded-full font-semibold"
-                                style={{ background: "rgba(173,225,251,0.07)", color: C.muted, border: `1px solid rgba(173,225,251,0.12)`, boxShadow: "2px 2px 6px rgba(1,8,45,0.5), -1px -1px 4px rgba(38,108,169,0.08)" }}>
+                                style={{ background: "rgba(173,225,251,0.06)", color: C.muted, border: `1px solid rgba(173,225,251,0.1)`, boxShadow: "2px 2px 5px rgba(1,8,45,0.5), -2px -2px 6px rgba(10,30,82,0.38), 2px 2px 6px rgba(1,8,45,0.6)" }}>
                                 {s}
                               </span>
                             ))}
@@ -188,7 +216,7 @@ export default function Home() {
         style={{ background: "rgba(173,225,251,0.03)", borderBottom: `1px solid ${C.border}` }}>
         <div className="flex items-center gap-2">
           <span className="px-3 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase"
-            style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)`, boxShadow: "2px 2px 6px rgba(1,8,45,0.5), -1px -1px 3px rgba(173,225,251,0.08)" }}>
+            style={{ background: "rgba(173,225,251,0.07)", color: C.accent, border: `1px solid rgba(173,225,251,0.18)`, boxShadow: "2px 2px 5px rgba(1,8,45,0.5), -2px -2px 7px rgba(10,30,82,0.4), 2px 2px 7px rgba(1,8,45,0.6)" }}>
             Prototype
           </span>
           <span style={{ color: C.muted }}>
@@ -253,7 +281,7 @@ export default function Home() {
             <Link
               href="/assessment"
               className="inline-flex items-center gap-2 text-sm font-extrabold px-8 py-4 rounded-full transition-all focus-ring group"
-              style={{ background: C.accent, color: C.bg, boxShadow: btnShadow }}
+              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
@@ -339,16 +367,21 @@ export default function Home() {
                 className="relative w-full max-w-md rounded-2xl p-8"
                 style={{
                   background: C.card,
-                  boxShadow: `${raisedHover}, 0 0 0 1px rgba(173,225,251,0.1)`,
-                  border: `1px solid rgba(173,225,251,0.12)`,
+                  boxShadow: [
+                    "2px 2px 6px rgba(1,8,45,0.6)",
+                    "-8px -8px 24px rgba(10,30,82,0.5)",
+                    "10px 10px 30px rgba(1,8,45,0.9)",
+                    "0 0 0 1px rgba(173,225,251,0.08)",
+                  ].join(", "),
+                  border: `1px solid rgba(173,225,251,0.1)`,
                 }}
               >
                 <button
                   onClick={() => setActiveCard(null)}
                   className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full transition-all focus-ring text-sm"
-                  style={{ color: C.muted, background: C.mid, boxShadow: "2px 2px 6px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)" }}
-                  onMouseEnter={e => (e.currentTarget.style.boxShadow = "3px 3px 8px rgba(1,8,45,0.7), -2px -2px 5px rgba(38,108,169,0.15)")}
-                  onMouseLeave={e => (e.currentTarget.style.boxShadow = "2px 2px 6px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)")}
+                  style={{ color: C.muted, background: C.mid, boxShadow: secondaryShadow }}
+                  onMouseEnter={e => (e.currentTarget.style.boxShadow = secondaryShadowHover)}
+                  onMouseLeave={e => (e.currentTarget.style.boxShadow = secondaryShadow)}
                   aria-label="Close"
                 >
                   ✕
@@ -382,9 +415,9 @@ export default function Home() {
                   <button
                     onClick={() => setActiveCard((activeCard - 1 + DIMENSIONS.length) % DIMENSIONS.length)}
                     className="text-sm font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-                    style={{ color: C.muted, background: C.mid, boxShadow: "3px 3px 8px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)" }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = "4px 4px 10px rgba(1,8,45,0.7), -2px -2px 6px rgba(38,108,169,0.14)"; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = "3px 3px 8px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)"; }}
+                    style={{ color: C.muted, background: C.mid, boxShadow: secondaryShadow }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadowHover; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadow; }}
                   >
                     ← Prev
                   </button>
@@ -404,7 +437,7 @@ export default function Home() {
                   <button
                     onClick={() => setActiveCard((activeCard + 1) % DIMENSIONS.length)}
                     className="text-sm font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-                    style={{ color: C.bg, background: C.accent, boxShadow: btnShadow }}
+                    style={{ color: C.bg, background: btnGradient, boxShadow: btnShadow }}
                     onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover; }}
                     onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = btnShadow; }}
                   >
@@ -426,7 +459,7 @@ export default function Home() {
           <div className="flex flex-wrap gap-3">
             <a href="/AIRE-Companion-Guide.pdf" download
               className="inline-flex items-center gap-1.5 text-xs font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-              style={{ background: C.accent, color: C.bg, boxShadow: btnShadow }}
+              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
@@ -444,15 +477,15 @@ export default function Home() {
               style={{
                 background: C.mid,
                 color: C.accent,
-                border: `1px solid rgba(173,225,251,0.12)`,
-                boxShadow: "3px 3px 8px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)",
+                border: `1px solid rgba(173,225,251,0.1)`,
+                boxShadow: secondaryShadow,
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "4px 4px 10px rgba(1,8,45,0.7), -2px -2px 6px rgba(38,108,169,0.14)";
+                (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadowHover;
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "3px 3px 8px rgba(1,8,45,0.6), -1px -1px 4px rgba(38,108,169,0.1)";
+                (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadow;
                 (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
               }}
             >
