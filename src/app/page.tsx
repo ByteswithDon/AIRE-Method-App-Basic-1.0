@@ -4,54 +4,53 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
-const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-});
-
 const C = {
-  bg:      "#0D2255",
-  card:    "#163070",
-  mid:     "#091A45",
-  surface: "#1A3A80",
-  blue:    "#3A8FD4",
-  accent:  "#ADE1FB",
-  muted:   "rgba(173,225,251,0.72)",
-  subtle:  "rgba(173,225,251,0.4)",
-  border:  "rgba(173,225,251,0.1)",
+  bg:           "#FFFFFF",
+  bgAlt:        "#F8FAFC",
+  bgSection:    "#F1F5F9",
+  border:       "#E2E8F0",
+  borderAccent: "#BAE6FD",
+  text:         "#0F172A",
+  textMuted:    "#64748B",
+  textSubtle:   "#94A3B8",
+  accent:       "#0EA5E9",
+  accentDark:   "#0284C7",
+  accentBg:     "#F0F9FF",
+  blue:         "#1D4ED8",
+  navy:         "#0F172A",
 };
-
-// Neumorphic shadow tokens — medium-tone base unlocks both light and dark directions
-const raised =
-  "-8px -8px 18px rgba(50,100,220,0.65), 8px 8px 22px rgba(0,5,25,0.92)";
-const raisedHover =
-  "-11px -11px 24px rgba(70,130,240,0.6), 11px 11px 28px rgba(0,5,25,0.96), 0 0 20px rgba(173,225,251,0.08)";
-const btnShadow =
-  "-5px -5px 14px rgba(50,100,220,0.55), 5px 5px 16px rgba(0,5,25,0.9)";
-const btnShadowHover =
-  "-8px -8px 18px rgba(70,130,240,0.55), 8px 8px 22px rgba(0,5,25,0.95), 0 0 28px rgba(173,225,251,0.25)";
-const btnGradient = `linear-gradient(135deg, #C4EAFE 0%, #ADE1FB 45%, #7EC8E3 100%)`;
-const secondaryShadow =
-  "-4px -4px 12px rgba(50,100,220,0.5), 4px 4px 14px rgba(0,5,25,0.88)";
-const secondaryShadowHover =
-  "-6px -6px 16px rgba(70,130,240,0.5), 6px 6px 18px rgba(0,5,25,0.94)";
 
 const DIMENSIONS = [
   {
-    letter: "A", name: "Approach", desc: "Vision & strategic stance", color: C.accent,
+    letter: "A",
+    name: "Approach",
+    desc: "Vision & strategic stance",
+    color: C.accent,
+    illustration: "/illustrations/strategy.svg",
     full: "This is about how your organization has defined where it's headed with technology. Do you have a documented strategy? Is leadership aligned on what responsible technology use actually looks like? That's what Approach is measuring.",
   },
   {
-    letter: "I", name: "Implementation", desc: "Deployment & tooling", color: "#7EB8D4",
+    letter: "I",
+    name: "Implementation",
+    desc: "Deployment & tooling",
+    color: C.blue,
+    illustration: "/illustrations/tools.svg",
     full: "This is where the rubber meets the road. Are tools actually deployed and in use? Is there a real process for evaluating and selecting them? Implementation is about whether decisions are turning into working systems that people actually use.",
   },
   {
-    letter: "R", name: "Responsibility", desc: "Ethics & privacy", color: C.accent,
+    letter: "R",
+    name: "Responsibility",
+    desc: "Ethics & privacy",
+    color: C.accent,
+    illustration: "/illustrations/checklist.svg",
     full: "Technology use comes with real obligations. Responsibility looks at whether your organization has policies in place, handles data with care, and has oversight structures that keep things accountable. It's not just compliance. It's how you build trust.",
   },
   {
-    letter: "E", name: "Enablement", desc: "Staff capacity & culture", color: "#7EB8D4",
+    letter: "E",
+    name: "Enablement",
+    desc: "Staff capacity & culture",
+    color: C.blue,
+    illustration: "/illustrations/collaborative-work.svg",
     full: "Tools don't adopt themselves. Enablement is about whether your people have the training, the support, and the confidence to actually use what's been put in front of them. That means programs, champions, and a culture where it's okay to try things and figure it out.",
   },
 ];
@@ -69,60 +68,42 @@ export default function Home() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-white overflow-x-hidden" style={{ background: C.bg }}>
-
-      {/* Atmosphere */}
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0" style={{
-        background: `
-          radial-gradient(ellipse 65% 50% at 12% 88%, rgba(38,108,169,0.22) 0%, transparent 60%),
-          radial-gradient(ellipse 50% 40% at 88% 12%, rgba(173,225,251,0.07) 0%, transparent 55%),
-          radial-gradient(ellipse 40% 30% at 50% 50%, rgba(15,37,115,0.15) 0%, transparent 70%),
-          linear-gradient(rgba(173,225,251,0.018) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(173,225,251,0.018) 1px, transparent 1px)
-        `,
-        backgroundSize: "100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px",
-      }} />
+    <div className="min-h-screen flex flex-col font-sans overflow-x-hidden" style={{ background: C.bg, color: C.text }}>
 
       {/* Nav */}
-      <header className="relative z-10">
-        <nav className="px-6 md:px-12 py-5 flex items-center justify-between">
-          <span className="text-sm font-extrabold tracking-[0.2em] uppercase text-white">AIRE™</span>
-          <div className="flex items-center gap-4">
+      <header className="sticky top-0 z-50" style={{ background: C.bg, borderBottom: `1px solid ${C.border}` }}>
+        <nav className="px-6 md:px-12 py-4 flex items-center justify-between">
+          <span className="text-sm font-extrabold tracking-[0.2em] uppercase" style={{ color: C.navy }}>AIRE™</span>
+          <div className="flex items-center gap-1 md:gap-3">
             <button
               onClick={() => { setAboutOpen(!aboutOpen); setBioOpen(false); }}
-              className="text-sm font-semibold transition-colors focus-ring px-4 py-2 rounded-full"
-              style={{ color: C.muted }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = C.muted)}
+              className="text-sm font-medium px-3 py-1.5 rounded-md transition-colors"
+              style={{ color: C.textMuted }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.text; (e.currentTarget as HTMLElement).style.background = C.bgAlt; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.textMuted; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
             >About</button>
 
             <a href="https://www.linkedin.com/in/lyndonia/" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-semibold transition-colors focus-ring px-3 py-2 rounded-full"
-              style={{ color: C.muted }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = C.muted)}
+              className="hidden sm:flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-md transition-colors"
+              style={{ color: C.textMuted }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.text; (e.currentTarget as HTMLElement).style.background = C.bgAlt; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.textMuted; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
               aria-label="LinkedIn"
-            ><LinkedInIcon /><span className="hidden sm:inline">LinkedIn</span></a>
+            ><LinkedInIcon /><span>LinkedIn</span></a>
 
             <a href="https://github.com/byteswithdon" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm font-semibold transition-colors focus-ring px-3 py-2 rounded-full"
-              style={{ color: C.muted }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = C.muted)}
+              className="hidden sm:flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-md transition-colors"
+              style={{ color: C.textMuted }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = C.text; (e.currentTarget as HTMLElement).style.background = C.bgAlt; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = C.textMuted; (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
               aria-label="GitHub"
-            ><GitHubIcon /><span className="hidden sm:inline">GitHub</span></a>
+            ><GitHubIcon /><span>GitHub</span></a>
 
             <Link href="/assessment"
-              className="text-sm font-extrabold px-5 py-2.5 rounded-full transition-all focus-ring"
-              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadow;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              }}
+              className="text-sm font-semibold px-4 py-2 rounded-md transition-colors"
+              style={{ background: C.navy, color: "#FFFFFF" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "#1E293B"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = C.navy}
             >Begin Assessment</Link>
           </div>
         </nav>
@@ -132,13 +113,13 @@ export default function Home() {
           {aboutOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
-              style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, background: "rgba(9,26,69,0.97)" }}
+              style={{ borderTop: `1px solid ${C.border}`, background: C.bgAlt }}
             >
               <div className="px-6 md:px-12 py-8 max-w-3xl">
-                <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.accent }}>About</p>
-                <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
+                <p className="text-xs font-bold tracking-[0.16em] uppercase mb-4" style={{ color: C.accent }}>About</p>
+                <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>
                   I&rsquo;m a Microsoft 365 and SharePoint administrator, LMS administrator, and migration specialist
                   with 10+ years helping organizations build the infrastructure behind enterprise learning and
                   collaboration platforms. I love working with teams that know something needs to change but
@@ -146,7 +127,7 @@ export default function Home() {
                 </p>
                 <button
                   onClick={() => setBioOpen(!bioOpen)}
-                  className="mt-4 text-xs font-bold tracking-wide flex items-center gap-1 focus-ring transition-opacity hover:opacity-70"
+                  className="mt-4 text-xs font-semibold flex items-center gap-1 transition-opacity hover:opacity-70"
                   style={{ color: C.accent }}
                 >
                   {bioOpen ? "Show less ↑" : "Read full bio ↓"}
@@ -155,19 +136,19 @@ export default function Home() {
                   {bioOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}
+                      exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-5 space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
+                      <div className="pt-5 space-y-3 text-sm leading-relaxed" style={{ color: C.textMuted }}>
                         <p>I&rsquo;m especially interested in working with organizations that are navigating infrastructure buildouts, enablement, and training, and that are trying to figure out which tech stacks will actually fit how they work. That question comes up constantly and it deserves a real process, not just a vendor recommendation.</p>
                         <p>I lead infrastructure development and migrations for learning management systems, build out governance frameworks, and create the training and rollout documentation that helps teams actually adopt what gets built. I also use AI-enabled prototyping to model features and bridge the gap between technical and non-technical stakeholders before anything goes live.</p>
                         <p>I&rsquo;m hands-on across the M365 stack (SharePoint, Teams, Learn 365, Zensai) and comfortable across a range of LMS platforms and API integrations.</p>
                         <div className="pt-3">
-                          <p className="text-xs font-extrabold tracking-wide uppercase text-white mb-3">Core Skills</p>
+                          <p className="text-xs font-bold tracking-wide uppercase mb-3" style={{ color: C.text }}>Core Skills</p>
                           <div className="flex flex-wrap gap-2">
                             {["SharePoint Online","M365 Administration","LMS Administration","Power Automate","Power BI","Information Architecture","Content Migration","WCAG / ADA","API Integration","SCORM / xAPI","SQL","Supabase","Vercel","GitHub","Docebo","Canvas","Moodle","Notion","Scribe","Zendesk"].map(s => (
-                              <span key={s} className="text-xs px-3 py-1 rounded-full font-semibold"
-                                style={{ background: C.card, color: C.muted, border: `1px solid rgba(173,225,251,0.08)`, boxShadow: secondaryShadow }}>
+                              <span key={s} className="text-xs px-3 py-1 rounded-full font-medium"
+                                style={{ background: C.bg, color: C.textMuted, border: `1px solid ${C.border}` }}>
                                 {s}
                               </span>
                             ))}
@@ -184,20 +165,20 @@ export default function Home() {
       </header>
 
       {/* Prototype notice */}
-      <div className="relative z-10 px-6 md:px-12 py-3 flex flex-wrap items-center gap-3 justify-between text-xs"
-        style={{ background: "rgba(173,225,251,0.02)", borderBottom: `1px solid ${C.border}` }}>
+      <div className="px-6 md:px-12 py-2.5 flex flex-wrap items-center gap-3 justify-between text-xs"
+        style={{ background: C.bgAlt, borderBottom: `1px solid ${C.border}` }}>
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1 rounded-full text-xs font-extrabold tracking-wider uppercase"
-            style={{ background: C.card, color: C.accent, border: `1px solid rgba(173,225,251,0.12)`, boxShadow: secondaryShadow }}>
+          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider"
+            style={{ background: C.accentBg, color: C.accentDark, border: `1px solid ${C.borderAccent}` }}>
             Prototype
           </span>
-          <span style={{ color: C.muted }}>
-            Demonstration only. Responses are <strong className="text-white font-bold">not saved</strong> and no database is connected.
+          <span style={{ color: C.textMuted }}>
+            Demonstration only. Responses are <strong style={{ color: C.text, fontWeight: 600 }}>not saved</strong> and no database is connected.
           </span>
         </div>
         <button
           onClick={() => setIntroOpen(!introOpen)}
-          className="font-bold transition-opacity hover:opacity-70 focus-ring whitespace-nowrap"
+          className="font-semibold transition-opacity hover:opacity-70"
           style={{ color: C.accent }}
         >
           {introOpen ? "Hide context ↑" : "Why I built this ↓"}
@@ -209,16 +190,16 @@ export default function Home() {
         {introOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 overflow-hidden"
-            style={{ borderBottom: `1px solid ${C.border}`, background: "rgba(9,26,69,0.97)" }}
+            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+            style={{ borderBottom: `1px solid ${C.border}`, background: C.bgAlt }}
           >
             <div className="px-6 md:px-12 py-8 max-w-3xl">
-              <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.blue }}>Context &amp; Intent</p>
-              <div className="space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
+              <p className="text-xs font-bold tracking-[0.16em] uppercase mb-4" style={{ color: C.blue }}>Context &amp; Intent</p>
+              <div className="space-y-3 text-sm leading-relaxed" style={{ color: C.textMuted }}>
                 <p>The AIRE Method grew out of a real problem I kept running into: teams in flat organizations adopting technology without a shared process, which meant duplicate subscriptions, misaligned rollouts, and people who never really got brought along.</p>
-                <p>It started as a Google Sheets evaluation tool I used to facilitate conversations with stakeholders. After presenting it at the <strong className="text-white">Learning Forward Winter Conference</strong> and watching leaders across sectors immediately recognize the gap it was filling, I decided to build it into something you could actually move through online.</p>
-                <p>This prototype shows how the framework works as an interactive tool. In a full production version, responses would live in Supabase and the scoring engine would generate tailored recommendations. <strong className="text-white">This demo is about the experience and the logic, not a live backend.</strong></p>
+                <p>It started as a Google Sheets evaluation tool I used to facilitate conversations with stakeholders. After presenting it at the <strong style={{ color: C.text, fontWeight: 600 }}>Learning Forward Winter Conference</strong> and watching leaders across sectors immediately recognize the gap it was filling, I decided to build it into something you could actually move through online.</p>
+                <p>This prototype shows how the framework works as an interactive tool. In a full production version, responses would live in Supabase and the scoring engine would generate tailored recommendations. <strong style={{ color: C.text, fontWeight: 600 }}>This demo is about the experience and the logic, not a live backend.</strong></p>
                 <p>I built it using AI-enabled prototyping (Claude + Claude Code) alongside my own platform and architecture background, which is exactly how I work with teams every day.</p>
               </div>
             </div>
@@ -227,193 +208,189 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Hero */}
-      <main id="main-content" className="relative z-10 flex-1 flex flex-col lg:flex-row">
+      <main id="main-content" className="flex-1 flex flex-col lg:flex-row">
 
         {/* Left */}
-        <div className="flex flex-col justify-center px-6 md:px-12 py-20 max-w-2xl">
-          <motion.p {...fade(0.1)} className="text-xs font-extrabold tracking-[0.26em] uppercase mb-6" style={{ color: C.accent }}>
+        <div className="flex flex-col justify-center px-6 md:px-12 py-16 lg:py-24 lg:max-w-[52%]">
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="text-xs font-bold tracking-[0.22em] uppercase mb-5"
+            style={{ color: C.accent }}
+          >
             Technology Readiness Diagnostic
           </motion.p>
 
-          <motion.h1 {...fade(0.18)}
+          <motion.h1
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
             className="leading-none mb-6"
-            style={{ fontSize: "clamp(52px, 8vw, 88px)", letterSpacing: "-0.03em", fontWeight: 900 }}
+            style={{ fontSize: "clamp(48px, 7vw, 80px)", letterSpacing: "-0.03em", fontWeight: 900, color: C.navy }}
           >
-            GAP
-            <br />
+            GAP<br />
             <span style={{ color: C.accent }}>Assessment</span>
           </motion.h1>
 
-          <motion.p {...fade(0.26)} className="text-base leading-relaxed max-w-md mb-10 font-medium" style={{ color: C.muted }}>
+          <motion.p
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.24 }}
+            className="text-base leading-relaxed max-w-md mb-10"
+            style={{ color: C.textMuted }}
+          >
             Measure your organization&rsquo;s readiness across the four dimensions
             of technology adoption and get a structured 30-day correction pathway.
           </motion.p>
 
-          <motion.div {...fade(0.32)} className="flex flex-wrap gap-3">
-            <Link
-              href="/assessment"
-              className="inline-flex items-center gap-2 text-sm font-extrabold px-8 py-4 rounded-full transition-all focus-ring group"
-              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadow;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              }}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Link href="/assessment"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-md transition-colors group"
+              style={{ background: C.navy, color: "#FFFFFF" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "#1E293B"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = C.navy}
             >
               Begin Assessment
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="group-hover:translate-x-0.5 transition-transform inline-block">→</span>
             </Link>
           </motion.div>
 
           {/* Stats */}
-          <motion.div {...fade(0.44)} className="flex gap-5 mt-16 pt-10" style={{ borderTop: `1px solid ${C.border}` }}>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.42 }}
+            className="flex gap-4 mt-14 pt-10"
+            style={{ borderTop: `1px solid ${C.border}` }}
+          >
             {STATS.map(s => (
-              <div key={s.num}
-                className="px-5 py-4 rounded-2xl"
-                style={{ background: C.card, boxShadow: raised, border: `1px solid rgba(173,225,251,0.06)` }}
-              >
-                <div className="text-2xl mb-1" style={{ fontWeight: 900, color: C.accent }}>{s.num}</div>
-                <div className="text-xs font-bold tracking-wide uppercase" style={{ color: C.subtle }}>{s.label}</div>
+              <div key={s.num} className="px-4 py-3 rounded-lg" style={{ background: C.bgAlt, border: `1px solid ${C.border}` }}>
+                <div className="text-xl font-black mb-0.5" style={{ color: C.navy }}>{s.num}</div>
+                <div className="text-xs font-medium" style={{ color: C.textSubtle }}>{s.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Right: Neumorphic Tab Bar — extracted from Figma kit */}
+        {/* Right: Dimension panel */}
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.55, delay: 0.3 }}
           className="flex-1 flex items-center justify-center p-8 lg:p-16"
+          style={{ background: C.bgAlt, borderLeft: `1px solid ${C.border}` }}
         >
           <div className="w-full max-w-sm flex flex-col gap-4">
 
-            {/* Tab bar container — raised outer shell, tabs press in when active */}
-            <div className="p-2.5 rounded-2xl" style={{
-              background: C.card,
-              boxShadow: raised,
-              border: `1px solid rgba(173,225,251,0.06)`,
-            }}>
-              <div className="flex gap-2">
+            {/* Hero illustration shown when nothing selected */}
+            <AnimatePresence>
+              {activeCard === null && (
+                <motion.div
+                  key="hero-illus"
+                  initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex justify-center"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/illustrations/tech-briefing.svg" alt="Technology readiness" width={200} height={150} style={{ opacity: 0.88 }} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Tab bar card */}
+            <div className="rounded-xl overflow-hidden" style={{ background: C.bg, border: `1px solid ${C.border}` }}>
+
+              {/* Tabs */}
+              <div className="flex" style={{ borderBottom: `1px solid ${C.border}` }}>
                 {DIMENSIONS.map((dim, i) => {
                   const isActive = activeCard === i;
                   return (
                     <button
                       key={dim.letter}
                       onClick={() => setActiveCard(isActive ? null : i)}
-                      className="flex-1 py-4 rounded-xl flex flex-col items-center gap-1.5 transition-all duration-200 focus-ring"
+                      className="flex-1 py-3.5 flex flex-col items-center gap-1 transition-all duration-150 focus-ring"
                       style={{
-                        background: isActive ? C.mid : "transparent",
-                        boxShadow: isActive
-                          ? "inset 5px 5px 12px rgba(0,5,25,0.88), inset -4px -4px 10px rgba(50,100,220,0.45)"
-                          : "none",
+                        background: isActive ? C.accentBg : "transparent",
+                        borderBottom: isActive ? `2px solid ${C.accent}` : "2px solid transparent",
+                        color: isActive ? C.accent : C.textSubtle,
+                      }}
+                      onMouseEnter={e => {
+                        if (!isActive) {
+                          (e.currentTarget as HTMLElement).style.background = C.bgAlt;
+                          (e.currentTarget as HTMLElement).style.color = C.textMuted;
+                        }
+                      }}
+                      onMouseLeave={e => {
+                        if (!isActive) {
+                          (e.currentTarget as HTMLElement).style.background = "transparent";
+                          (e.currentTarget as HTMLElement).style.color = C.textSubtle;
+                        }
                       }}
                     >
-                      <span style={{ fontWeight: 900, color: dim.color, fontSize: 26, lineHeight: 1 }}>
-                        {dim.letter}
-                      </span>
-                      <span className="text-xs font-bold" style={{ color: isActive ? C.accent : C.subtle }}>
-                        {dim.name}
-                      </span>
+                      <span style={{ fontWeight: 900, fontSize: 22, lineHeight: 1 }}>{dim.letter}</span>
+                      <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.03em" }}>{dim.name}</span>
                     </button>
                   );
                 })}
               </div>
-            </div>
 
-            {/* Content panel — inset well, slides content in */}
-            <div className="rounded-2xl overflow-hidden" style={{
-              background: C.mid,
-              boxShadow: "inset 4px 4px 10px rgba(0,5,25,0.85), inset -4px -4px 10px rgba(50,100,220,0.42)",
-              border: `1px solid rgba(173,225,251,0.05)`,
-              minHeight: 160,
-            }}>
-              <AnimatePresence mode="wait">
-                {activeCard !== null ? (
-                  <motion.div
-                    key={activeCard}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="p-6"
-                  >
-                    <div className="flex items-baseline gap-2 mb-3">
-                      <span style={{ fontWeight: 900, color: DIMENSIONS[activeCard].color, fontSize: 40, lineHeight: 1 }}>
-                        {DIMENSIONS[activeCard].letter}
-                      </span>
-                      <span className="text-base font-bold text-white">{DIMENSIONS[activeCard].name}</span>
-                    </div>
-                    <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: C.subtle }}>
-                      {DIMENSIONS[activeCard].desc}
-                    </p>
-                    <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                      {DIMENSIONS[activeCard].full}
-                    </p>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="placeholder"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="h-full flex flex-col items-center justify-center p-8 text-center gap-2"
-                    style={{ minHeight: 160 }}
-                  >
-                    <p className="text-xs font-extrabold tracking-[0.2em] uppercase" style={{ color: C.subtle }}>
-                      Select a dimension
-                    </p>
-                    <p className="text-xs font-medium" style={{ color: "rgba(173,225,251,0.25)" }}>
-                      Tap A · I · R · E above
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Content well */}
+              <div style={{ minHeight: 180 }}>
+                <AnimatePresence mode="wait">
+                  {activeCard !== null ? (
+                    <motion.div
+                      key={activeCard}
+                      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className="p-5 flex gap-4"
+                    >
+                      <div className="shrink-0 flex items-start pt-1">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={DIMENSIONS[activeCard].illustration} alt={DIMENSIONS[activeCard].name} width={80} height={80} style={{ opacity: 0.9 }} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: DIMENSIONS[activeCard].color }}>
+                          {DIMENSIONS[activeCard].name}
+                        </p>
+                        <p className="text-xs mb-2.5" style={{ color: C.textSubtle }}>{DIMENSIONS[activeCard].desc}</p>
+                        <p className="text-sm leading-relaxed" style={{ color: C.textMuted }}>{DIMENSIONS[activeCard].full}</p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="placeholder"
+                      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                      className="flex flex-col items-center justify-center p-8 text-center"
+                      style={{ minHeight: 180 }}
+                    >
+                      <p className="text-xs font-semibold mb-1" style={{ color: C.textSubtle }}>Select a dimension</p>
+                      <p className="text-xs" style={{ color: "#CBD5E1" }}>Tap A · I · R · E above</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
-
           </div>
         </motion.div>
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 md:px-12 py-8" style={{ borderTop: `1px solid ${C.border}` }}>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-          <span className="text-xs font-semibold" style={{ color: C.subtle }}>
-            AIRE™ · Technology Readiness &amp; Implementation Evaluation
-          </span>
+      <footer className="px-6 md:px-12 py-8" style={{ borderTop: `1px solid ${C.border}`, background: C.bgAlt }}>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <span className="text-xs" style={{ color: C.textSubtle }}>AIRE™ · Technology Readiness &amp; Implementation Evaluation</span>
           <div className="flex flex-wrap gap-3">
             <a href="/AIRE-Companion-Guide.pdf" download
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-              style={{ background: btnGradient, color: C.bg, boxShadow: btnShadow }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = btnShadow;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              }}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-md transition-colors"
+              style={{ background: C.navy, color: "#FFFFFF" }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "#1E293B"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = C.navy}
             ><DownloadIcon size={12} /> Download the Sample Facilitation Guide</a>
             <a
               href="mailto:lyndoniamckenzie@gmail.com?subject=AIRE%20Method%20%E2%80%94%20Request%20for%20More%20Information&body=Hi%20Lyndonia%2C%0A%0AI%27d%20love%20to%20learn%20more%20about%20the%20AIRE%20Method.%0A%0A"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-              style={{
-                background: C.mid,
-                color: C.accent,
-                border: `1px solid rgba(173,225,251,0.1)`,
-                boxShadow: secondaryShadow,
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadowHover;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadow;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-              }}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-md transition-colors"
+              style={{ background: C.bg, color: C.text, border: `1px solid ${C.border}` }}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = C.bgSection}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = C.bg}
             >Request More Information</a>
           </div>
         </div>
@@ -424,7 +401,7 @@ export default function Home() {
 
 function LinkedInIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
       <rect x="2" y="9" width="4" height="12"/>
       <circle cx="4" cy="4" r="2"/>
@@ -434,7 +411,7 @@ function LinkedInIcon() {
 
 function GitHubIcon() {
   return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
       <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
     </svg>
   );

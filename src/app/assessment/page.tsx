@@ -7,25 +7,28 @@ import Link from "next/link";
 import { QUESTIONS, DIMENSIONS, type Answer } from "@/lib/assessment";
 
 const C = {
-  bg:      "#0D2255",
-  card:    "#163070",
-  mid:     "#091A45",
-  surface: "#1A3A80",
-  accent:  "#ADE1FB",
-  border:  "rgba(173,225,251,0.1)",
-  muted:   "rgba(173,225,251,0.72)",
-  subtle:  "rgba(173,225,251,0.4)",
+  bg:           "#FFFFFF",
+  bgAlt:        "#F8FAFC",
+  bgSection:    "#F1F5F9",
+  border:       "#E2E8F0",
+  borderAccent: "#BAE6FD",
+  text:         "#0F172A",
+  textMuted:    "#64748B",
+  textSubtle:   "#94A3B8",
+  accent:       "#0EA5E9",
+  accentDark:   "#0284C7",
+  accentBg:     "#F0F9FF",
+  blue:         "#1D4ED8",
+  navy:         "#0F172A",
 };
 
-// Neumorphic shadow tokens — medium-tone base unlocks both light and dark directions
-const raised   = "-8px -8px 18px rgba(50,100,220,0.65), 8px 8px 22px rgba(0,5,25,0.92)";
-const pressed  = "inset 5px 5px 12px rgba(0,5,25,0.88), inset -4px -4px 10px rgba(50,100,220,0.45)";
-const btnRaised = "-5px -5px 14px rgba(50,100,220,0.55), 5px 5px 16px rgba(0,5,25,0.9)";
-const btnHover  = "-8px -8px 18px rgba(70,130,240,0.55), 8px 8px 22px rgba(0,5,25,0.95), 0 0 28px rgba(173,225,251,0.25)";
-const btnGradient = "linear-gradient(135deg, #C4EAFE 0%, #ADE1FB 45%, #7EC8E3 100%)";
-const trackInset  = "inset 4px 4px 9px rgba(0,5,25,0.85), inset -3px -3px 7px rgba(50,100,220,0.42)";
-
-const DIM_COLORS = ["#ADE1FB", "#7EB8D4", "#ADE1FB", "#7EB8D4"];
+const DIM_COLORS  = [C.accent, C.blue, C.accent, C.blue];
+const DIM_ILLUSTS = [
+  "/illustrations/strategy.svg",
+  "/illustrations/tools.svg",
+  "/illustrations/checklist.svg",
+  "/illustrations/collaborative-work.svg",
+];
 
 export default function AssessmentPage() {
   const router = useRouter();
@@ -40,6 +43,7 @@ export default function AssessmentPage() {
   const dimIndex  = DIMENSIONS.findIndex(d => d.key === question.dimension);
   const dim       = DIMENSIONS[dimIndex];
   const dimColor  = DIM_COLORS[dimIndex];
+  const dimIllust = DIM_ILLUSTS[dimIndex];
 
   function handleNext() {
     if (selected === null) return;
@@ -67,61 +71,52 @@ export default function AssessmentPage() {
   }
 
   const variants = {
-    enter:  (d: number) => ({ opacity: 0, x: d * 24 }),
+    enter:  (d: number) => ({ opacity: 0, x: d * 20 }),
     center: { opacity: 1, x: 0 },
-    exit:   (d: number) => ({ opacity: 0, x: d * -24 }),
+    exit:   (d: number) => ({ opacity: 0, x: d * -20 }),
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-white" style={{ background: C.bg }}>
+    <div className="min-h-screen flex flex-col font-sans" style={{ background: C.bg, color: C.text }}>
 
       {/* Nav */}
       <header>
-        <nav className="px-6 md:px-10 py-5 flex items-center justify-between"
+        <nav className="px-6 md:px-10 py-4 flex items-center justify-between"
           style={{ borderBottom: `1px solid ${C.border}` }}>
-          <Link href="/" className="text-sm font-extrabold tracking-[0.18em] uppercase hover:opacity-70 transition-opacity focus-ring">
+          <Link href="/" className="text-sm font-extrabold tracking-[0.18em] uppercase transition-opacity hover:opacity-60"
+            style={{ color: C.navy }}>
             AIRE™
           </Link>
           <div className="flex items-center gap-4">
-            <span className="text-xs px-3 py-1 rounded-full font-extrabold tracking-wider uppercase"
-              style={{
-                background: C.card,
-                color: C.accent,
-                border: `1px solid rgba(173,225,251,0.12)`,
-                boxShadow: raised,
-              }}>
+            <span className="text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider"
+              style={{ background: C.accentBg, color: C.accentDark, border: `1px solid ${C.borderAccent}` }}>
               Prototype
             </span>
-            <span className="text-xs font-semibold tabular-nums" style={{ color: C.muted }}>
+            <span className="text-xs font-medium tabular-nums" style={{ color: C.textMuted }}>
               {currentIndex + 1} / {QUESTIONS.length}
             </span>
           </div>
         </nav>
 
-        {/* Neumorphic progress bar */}
-        <div className="px-6 md:px-10 py-4" style={{ borderBottom: `1px solid ${C.border}` }}>
-          <div className="h-3 rounded-full overflow-hidden"
-            style={{ background: C.mid, boxShadow: trackInset }}>
+        {/* Progress bar */}
+        <div className="px-6 md:px-10 py-3" style={{ borderBottom: `1px solid ${C.border}`, background: C.bgAlt }}>
+          <div className="h-1.5 rounded-full overflow-hidden" style={{ background: C.bgSection }}>
             <motion.div
               className="h-full rounded-full"
-              style={{ background: btnGradient }}
+              style={{ background: C.accent }}
               animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </div>
           <div className="flex justify-between mt-2">
-            <span className="text-xs font-semibold" style={{ color: C.subtle }}>
-              {dim.key} · Cell {question.cell} of 3
-            </span>
-            <span className="text-xs font-bold" style={{ color: dimColor }}>
-              {Math.round(progress)}%
-            </span>
+            <span className="text-xs" style={{ color: C.textSubtle }}>{dim.key} · Cell {question.cell} of 3</span>
+            <span className="text-xs font-bold" style={{ color: C.accent }}>{Math.round(progress)}%</span>
           </div>
         </div>
 
         {/* Demo notice */}
-        <div className="px-6 md:px-10 py-2 text-xs font-medium"
-          style={{ background: "rgba(173,225,251,0.02)", borderBottom: `1px solid ${C.border}`, color: C.muted }}>
+        <div className="px-6 md:px-10 py-2 text-xs"
+          style={{ background: C.bgAlt, borderBottom: `1px solid ${C.border}`, color: C.textSubtle }}>
           Demo mode. Responses are stored in your browser session only.
         </div>
       </header>
@@ -129,51 +124,54 @@ export default function AssessmentPage() {
       <main id="main-content" className="flex-1 flex flex-col md:flex-row">
 
         {/* Sidebar */}
-        <aside className="md:w-64 px-6 md:px-8 py-10 flex flex-col gap-8 shrink-0"
-          style={{ borderRight: `1px solid ${C.border}` }}>
+        <aside className="md:w-60 shrink-0 flex flex-col gap-6 px-6 md:px-7 py-8"
+          style={{ borderRight: `1px solid ${C.border}`, background: C.bgAlt }}>
 
-          {/* Current dimension badge */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={dimIndex}
+              initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.22 }}
+              className="flex justify-center"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={dimIllust} alt={dim.key} width={120} height={100} style={{ opacity: 0.85 }} />
+            </motion.div>
+          </AnimatePresence>
+
           <div>
-            <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.subtle }}>
-              Dimension
-            </p>
-            <div className="flex items-center gap-3 p-4 rounded-2xl"
-              style={{ background: C.card, boxShadow: raised, border: `1px solid rgba(173,225,251,0.06)` }}>
-              <span className="text-3xl" style={{ fontWeight: 900, color: dimColor, lineHeight: 1 }}>{dim.letter}</span>
-              <div>
-                <div className="text-sm font-bold text-white">{dim.key}</div>
-                <div className="text-xs font-medium mt-0.5" style={{ color: C.muted }}>{dim.desc}</div>
+            <p className="text-xs font-bold tracking-[0.15em] uppercase mb-3" style={{ color: C.textSubtle }}>Dimension</p>
+            <div className="rounded-lg p-4" style={{ background: C.bg, border: `1px solid ${C.border}`, borderLeft: `3px solid ${dimColor}` }}>
+              <div className="flex items-center gap-3">
+                <span style={{ fontWeight: 900, color: dimColor, fontSize: 28, lineHeight: 1 }}>{dim.letter}</span>
+                <div>
+                  <div className="text-sm font-bold" style={{ color: C.text }}>{dim.key}</div>
+                  <div className="text-xs mt-0.5" style={{ color: C.textMuted }}>{dim.desc}</div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Progress dots */}
           <div className="hidden md:block">
-            <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.subtle }}>Progress</p>
-            <div className="flex flex-col gap-4">
+            <p className="text-xs font-bold tracking-[0.15em] uppercase mb-3" style={{ color: C.textSubtle }}>Progress</p>
+            <div className="flex flex-col gap-3.5">
               {DIMENSIONS.map((d, di) => {
                 const dimQs     = QUESTIONS.filter(q => q.dimension === d.key);
                 const isCurrent = d.key === question.dimension;
                 const dc        = DIM_COLORS[di];
                 return (
                   <div key={d.key} className="flex items-center gap-3">
-                    <span className="text-xs w-4 font-extrabold" style={{ color: isCurrent ? dc : "rgba(173,225,251,0.2)" }}>
-                      {d.letter}
-                    </span>
-                    <div className="flex gap-2">
+                    <span className="text-xs w-4 font-bold" style={{ color: isCurrent ? dc : C.textSubtle }}>{d.letter}</span>
+                    <div className="flex gap-1.5">
                       {dimQs.map(q => {
                         const ans   = answers.find(a => a.questionId === q.id);
                         const isCur = q.id === question.id;
                         return (
-                          <div key={q.id}
-                            className="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                          <div key={q.id} className="w-2.5 h-2.5 rounded-full transition-all duration-300"
                             style={{
-                              background: isCur ? dc : ans ? "rgba(173,225,251,0.5)" : C.card,
-                              boxShadow:  isCur
-                                ? `0 0 8px ${dc}aa, ${raised}`
-                                : ans
-                                ? raised
-                                : pressed,
+                              background: isCur ? dc : ans ? dc + "66" : C.border,
+                              outline: isCur ? `2px solid ${dc}40` : "none",
+                              outlineOffset: 1,
                             }}
                           />
                         );
@@ -187,102 +185,62 @@ export default function AssessmentPage() {
         </aside>
 
         {/* Question area */}
-        <div className="flex-1 flex flex-col justify-center px-6 md:px-14 py-14 max-w-2xl">
+        <div className="flex-1 flex flex-col justify-center px-6 md:px-14 py-12 max-w-2xl">
           <AnimatePresence mode="wait" custom={direction}>
-            <motion.div key={question.id} custom={direction}
-              variants={variants} initial="enter" animate="center" exit="exit"
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}>
+            <motion.div key={question.id} custom={direction} variants={variants} initial="enter" animate="center" exit="exit"
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}>
 
-              <h1 className="text-2xl md:text-3xl leading-snug mb-3" style={{ letterSpacing: "-0.01em", fontWeight: 800 }}>
+              <h1 className="text-2xl md:text-3xl leading-snug mb-3 font-extrabold"
+                style={{ letterSpacing: "-0.015em", color: C.navy }}>
                 {question.text}
               </h1>
 
               {question.subtext && (
-                <p className="text-sm mb-10 font-medium" style={{ color: C.muted }}>{question.subtext}</p>
+                <p className="text-sm mb-9" style={{ color: C.textMuted }}>{question.subtext}</p>
               )}
 
-              {/* Neumorphic radio options */}
-              <fieldset className="flex flex-col gap-3 mb-12">
+              <fieldset className="flex flex-col gap-2.5 mb-10">
                 <legend className="sr-only">Rate your organization from 1 to 5</legend>
                 {question.options.map(opt => {
                   const isSel = selected === opt.value;
                   return (
                     <label key={opt.value}
-                      className="flex items-center gap-4 px-5 py-4 rounded-2xl cursor-pointer transition-all duration-200"
+                      className="flex items-center gap-4 px-4 py-3.5 rounded-lg cursor-pointer transition-all duration-150"
                       style={{
-                        background: C.card,
-                        boxShadow:  isSel ? pressed : raised,
-                        border:     isSel
-                          ? `1px solid rgba(173,225,251,0.25)`
-                          : `1px solid rgba(173,225,251,0.05)`,
-                        transform:  isSel ? "scale(0.99)" : "scale(1)",
+                        background: isSel ? C.accentBg : C.bg,
+                        border: `1px solid ${isSel ? C.borderAccent : C.border}`,
+                        borderLeft: `${isSel ? 3 : 1}px solid ${isSel ? C.accent : C.border}`,
                       }}
+                      onMouseEnter={e => { if (!isSel) (e.currentTarget as HTMLElement).style.background = C.bgAlt; }}
+                      onMouseLeave={e => { if (!isSel) (e.currentTarget as HTMLElement).style.background = C.bg; }}
                     >
-                      <input type="radio" name="answer" value={opt.value}
-                        checked={isSel} onChange={() => setSelected(opt.value)} className="sr-only" />
-
-                      {/* Neumorphic radio dot */}
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 transition-all duration-200"
-                        style={{
-                          background: C.mid,
-                          boxShadow: isSel ? pressed : raised,
-                        }}>
-                        {isSel && (
-                          <div className="w-2 h-2 rounded-full" style={{ background: dimColor }} />
-                        )}
+                      <input type="radio" name="answer" value={opt.value} checked={isSel} onChange={() => setSelected(opt.value)} className="sr-only" />
+                      <div className="shrink-0 flex items-center justify-center transition-all duration-150"
+                        style={{ width: 18, height: 18, borderRadius: "50%", border: `2px solid ${isSel ? C.accent : C.border}`, background: C.bg }}>
+                        {isSel && <div style={{ width: 8, height: 8, borderRadius: "50%", background: C.accent }} />}
                       </div>
-
-                      <span className="text-xs font-extrabold w-4 tabular-nums shrink-0"
-                        style={{ color: isSel ? dimColor : C.subtle }}>
-                        {opt.value}
-                      </span>
-                      <span className="text-sm font-semibold" style={{ color: isSel ? "#fff" : C.muted }}>
-                        {opt.label}
-                      </span>
+                      <span className="text-xs font-bold w-4 tabular-nums shrink-0" style={{ color: isSel ? C.accent : C.textSubtle }}>{opt.value}</span>
+                      <span className="text-sm" style={{ color: isSel ? C.text : C.textMuted, fontWeight: isSel ? 500 : 400 }}>{opt.label}</span>
                     </label>
                   );
                 })}
               </fieldset>
 
-              {/* Navigation buttons */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 {currentIndex > 0 && (
                   <button onClick={handleBack}
-                    className="text-sm font-bold px-6 py-3 rounded-full transition-all focus-ring"
-                    style={{
-                      color: C.muted,
-                      background: C.card,
-                      boxShadow: raised,
-                      border: `1px solid rgba(173,225,251,0.06)`,
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.boxShadow = "-8px -8px 18px rgba(70,130,240,0.55), 8px 8px 22px rgba(0,5,25,0.95)";
-                      (e.currentTarget as HTMLElement).style.color = "#fff";
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.boxShadow = raised;
-                      (e.currentTarget as HTMLElement).style.color = C.muted;
-                    }}
+                    className="text-sm font-medium px-5 py-2.5 rounded-md transition-colors"
+                    style={{ background: C.bg, color: C.textMuted, border: `1px solid ${C.border}` }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = C.bgAlt; (e.currentTarget as HTMLElement).style.color = C.text; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = C.bg; (e.currentTarget as HTMLElement).style.color = C.textMuted; }}
                   >← Back</button>
                 )}
-
                 <button onClick={handleNext} disabled={selected === null}
-                  className="text-sm font-extrabold px-8 py-3.5 rounded-full transition-all focus-ring inline-flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed"
-                  style={{
-                    background: btnGradient,
-                    color: C.bg,
-                    boxShadow: selected !== null ? btnRaised : "none",
-                  }}
-                  onMouseEnter={e => {
-                    if (selected !== null) {
-                      (e.currentTarget as HTMLElement).style.boxShadow = btnHover;
-                      (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-                    }
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = selected !== null ? btnRaised : "none";
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                  }}>
+                  className="text-sm font-semibold px-7 py-2.5 rounded-md transition-colors inline-flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
+                  style={{ background: selected !== null ? C.navy : C.bgSection, color: selected !== null ? "#FFFFFF" : C.textSubtle }}
+                  onMouseEnter={e => { if (selected !== null) (e.currentTarget as HTMLElement).style.background = "#1E293B"; }}
+                  onMouseLeave={e => { if (selected !== null) (e.currentTarget as HTMLElement).style.background = C.navy; }}
+                >
                   {isLast ? "View Results →" : "Continue →"}
                 </button>
               </div>
