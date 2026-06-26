@@ -282,133 +282,100 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Right: dimension cards */}
-        <div className="flex-1 flex items-center justify-center p-8 lg:p-16">
-          <div className="grid grid-cols-2 gap-5 w-full max-w-sm">
-            {DIMENSIONS.map((dim, i) => (
-              <motion.button
-                key={dim.letter}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => setActiveCard(i)}
-                className="p-6 rounded-2xl flex flex-col gap-2.5 transition-all duration-300 text-left focus-ring group"
-                style={{
-                  background: C.card,
-                  boxShadow: raised,
-                  border: `1px solid rgba(173,225,251,0.05)`,
-                }}
-                onMouseEnter={e => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.boxShadow = raisedHover;
-                  el.style.transform = "translateY(-4px)";
-                  el.style.border = `1px solid rgba(173,225,251,0.14)`;
-                }}
-                onMouseLeave={e => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.boxShadow = raised;
-                  el.style.transform = "translateY(0)";
-                  el.style.border = `1px solid rgba(173,225,251,0.05)`;
-                }}
-              >
-                <span className="text-4xl" style={{ fontWeight: 900, color: dim.color, lineHeight: 1 }}>{dim.letter}</span>
-                <span className="text-sm font-bold text-white mt-1">{dim.name}</span>
-                <span className="text-xs font-medium" style={{ color: C.subtle }}>{dim.desc}</span>
-                <span className="text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity mt-1" style={{ color: C.accent }}>Learn more →</span>
-              </motion.button>
-            ))}
-          </div>
-        </div>
+        {/* Right: Neumorphic Tab Bar — extracted from Figma kit */}
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="flex-1 flex items-center justify-center p-8 lg:p-16"
+        >
+          <div className="w-full max-w-sm flex flex-col gap-4">
 
-        {/* Dimension detail modal */}
-        <AnimatePresence>
-          {activeCard !== null && (
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-6"
-              style={{ background: "rgba(2,10,48,0.85)", backdropFilter: "blur(8px)" }}
-              onClick={() => setActiveCard(null)}
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.93, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.93, y: 16 }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                onClick={e => e.stopPropagation()}
-                className="relative w-full max-w-md rounded-2xl p-8"
-                style={{
-                  background: C.card,
-                  boxShadow: `-10px -10px 24px rgba(22,60,170,0.55), 12px 12px 32px rgba(0,2,12,0.99), 0 0 0 1px rgba(173,225,251,0.08)`,
-                  border: `1px solid rgba(173,225,251,0.1)`,
-                }}
-              >
-                <button
-                  onClick={() => setActiveCard(null)}
-                  className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full transition-all focus-ring text-sm"
-                  style={{ color: C.muted, background: C.mid, boxShadow: secondaryShadow }}
-                  onMouseEnter={e => (e.currentTarget.style.boxShadow = secondaryShadowHover)}
-                  onMouseLeave={e => (e.currentTarget.style.boxShadow = secondaryShadow)}
-                  aria-label="Close"
-                >✕</button>
+            {/* Tab bar container — raised outer shell, tabs press in when active */}
+            <div className="p-2.5 rounded-2xl" style={{
+              background: C.card,
+              boxShadow: raised,
+              border: `1px solid rgba(173,225,251,0.06)`,
+            }}>
+              <div className="flex gap-2">
+                {DIMENSIONS.map((dim, i) => {
+                  const isActive = activeCard === i;
+                  return (
+                    <button
+                      key={dim.letter}
+                      onClick={() => setActiveCard(isActive ? null : i)}
+                      className="flex-1 py-4 rounded-xl flex flex-col items-center gap-1.5 transition-all duration-200 focus-ring"
+                      style={{
+                        background: isActive ? C.mid : "transparent",
+                        boxShadow: isActive
+                          ? "inset 4px 4px 10px rgba(0,2,12,0.85), inset -3px -3px 8px rgba(22,60,170,0.4)"
+                          : "none",
+                      }}
+                    >
+                      <span style={{ fontWeight: 900, color: dim.color, fontSize: 26, lineHeight: 1 }}>
+                        {dim.letter}
+                      </span>
+                      <span className="text-xs font-bold" style={{ color: isActive ? C.accent : C.subtle }}>
+                        {dim.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-                <AnimatePresence mode="wait">
+            {/* Content panel — inset well, slides content in */}
+            <div className="rounded-2xl overflow-hidden" style={{
+              background: C.mid,
+              boxShadow: "inset 3px 3px 8px rgba(0,2,12,0.82), inset -3px -3px 6px rgba(22,60,170,0.38)",
+              border: `1px solid rgba(173,225,251,0.05)`,
+              minHeight: 160,
+            }}>
+              <AnimatePresence mode="wait">
+                {activeCard !== null ? (
                   <motion.div
                     key={activeCard}
-                    initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.22 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                    className="p-6"
                   >
-                    <p className="text-xs font-extrabold tracking-[0.2em] uppercase mb-4" style={{ color: C.subtle }}>
-                      {activeCard + 1} of {DIMENSIONS.length}
-                    </p>
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="text-6xl" style={{ fontWeight: 900, color: DIMENSIONS[activeCard].color, lineHeight: 1 }}>
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span style={{ fontWeight: 900, color: DIMENSIONS[activeCard].color, fontSize: 40, lineHeight: 1 }}>
                         {DIMENSIONS[activeCard].letter}
                       </span>
-                      <span className="text-xl font-bold text-white">{DIMENSIONS[activeCard].name}</span>
+                      <span className="text-base font-bold text-white">{DIMENSIONS[activeCard].name}</span>
                     </div>
-                    <p className="text-xs font-semibold uppercase tracking-widest mb-5" style={{ color: C.subtle }}>
+                    <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: C.subtle }}>
                       {DIMENSIONS[activeCard].desc}
                     </p>
                     <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
                       {DIMENSIONS[activeCard].full}
                     </p>
                   </motion.div>
-                </AnimatePresence>
+                ) : (
+                  <motion.div
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="h-full flex flex-col items-center justify-center p-8 text-center gap-2"
+                    style={{ minHeight: 160 }}
+                  >
+                    <p className="text-xs font-extrabold tracking-[0.2em] uppercase" style={{ color: C.subtle }}>
+                      Select a dimension
+                    </p>
+                    <p className="text-xs font-medium" style={{ color: "rgba(173,225,251,0.25)" }}>
+                      Tap A · I · R · E above
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-                <div className="flex items-center justify-between mt-8 pt-6" style={{ borderTop: `1px solid rgba(173,225,251,0.08)` }}>
-                  <button
-                    onClick={() => setActiveCard((activeCard - 1 + DIMENSIONS.length) % DIMENSIONS.length)}
-                    className="text-sm font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-                    style={{ color: C.muted, background: C.mid, boxShadow: secondaryShadow }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadowHover; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = secondaryShadow; }}
-                  >← Prev</button>
-
-                  <div className="flex gap-2">
-                    {DIMENSIONS.map((_, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setActiveCard(i)}
-                        className="w-2 h-2 rounded-full transition-all focus-ring"
-                        style={{ background: i === activeCard ? C.accent : "rgba(173,225,251,0.2)" }}
-                        aria-label={`Go to ${DIMENSIONS[i].name}`}
-                      />
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => setActiveCard((activeCard + 1) % DIMENSIONS.length)}
-                    className="text-sm font-bold px-5 py-2.5 rounded-full transition-all focus-ring"
-                    style={{ color: C.bg, background: btnGradient, boxShadow: btnShadow }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = btnShadowHover; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = btnShadow; }}
-                  >Next →</button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        </motion.div>
       </main>
 
       {/* Footer */}
