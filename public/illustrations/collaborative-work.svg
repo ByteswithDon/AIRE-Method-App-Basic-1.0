@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="75" cy="65" r="22" fill="#0EA5E9" opacity="0.15" stroke="#0EA5E9" stroke-width="2.5"/>
+  <circle cx="75" cy="58" r="10" fill="#0EA5E9" opacity="0.6"/>
+  <path d="M48 100 Q48 80 75 80 Q102 80 102 100" fill="#0EA5E9" opacity="0.3"/>
+  <circle cx="128" cy="65" r="22" fill="#0F172A" opacity="0.08" stroke="#0F172A" stroke-width="2"/>
+  <circle cx="128" cy="58" r="10" fill="#0F172A" opacity="0.3"/>
+  <path d="M101 100 Q101 80 128 80 Q155 80 155 100" fill="#0F172A" opacity="0.15"/>
+  <path d="M40 130 Q40 108 75 108 Q110 108 110 130" fill="#0EA5E9" opacity="0.2"/>
+  <path d="M93 130 Q93 108 128 108 Q163 108 163 130" fill="#0F172A" opacity="0.12"/>
+  <rect x="40" y="128" width="123" height="2" rx="1" fill="#E2E8F0"/>
+  <text x="100" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#64748B">Enablement</text>
+</svg>

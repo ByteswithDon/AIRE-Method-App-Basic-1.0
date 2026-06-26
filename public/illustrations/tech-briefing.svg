@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect x="25" y="38" width="150" height="95" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="25" y="38" width="150" height="18" rx="6" fill="#0F172A" opacity="0.07"/>
+  <rect x="25" y="46" width="150" height="10" fill="#0F172A" opacity="0.07"/>
+  <circle cx="38" cy="47" r="4" fill="#0EA5E9" opacity="0.5"/>
+  <circle cx="52" cy="47" r="4" fill="#0EA5E9" opacity="0.3"/>
+  <circle cx="66" cy="47" r="4" fill="#E2E8F0"/>
+  <rect x="38" y="68" width="55" height="32" rx="4" fill="#0EA5E9" opacity="0.12" stroke="#0EA5E9" stroke-width="1.5"/>
+  <polyline points="44,90 52,76 62,84 72,70 82,78" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="103" y="68" width="60" height="14" rx="3" fill="#0F172A" opacity="0.1"/>
+  <rect x="103" y="88" width="46" height="6" rx="3" fill="#0F172A" opacity="0.08"/>
+  <rect x="103" y="100" width="52" height="6" rx="3" fill="#0F172A" opacity="0.08"/>
+  <rect x="38" y="110" width="125" height="6" rx="3" fill="#0F172A" opacity="0.07"/>
+  <rect x="38" y="120" width="95" height="6" rx="3" fill="#0F172A" opacity="0.07"/>
+  <line x1="100" y1="133" x2="100" y2="152" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="60" y="150" width="80" height="6" rx="3" fill="#E2E8F0"/>
+  <text x="100" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#64748B">AI Readiness</text>
+</svg>
