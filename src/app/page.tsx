@@ -129,11 +129,16 @@ export default function Home() {
             >
               <div className="px-6 md:px-12 py-8 max-w-3xl">
                 <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.accent }}>About</p>
+                <p className="text-base font-bold text-white mb-3 leading-snug">
+                  Product &amp; platform technology specialist, the kind my teams call a unicorn.
+                </p>
                 <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                  I&rsquo;m a Microsoft 365 and SharePoint administrator, LMS administrator, and migration specialist
-                  with 10+ years helping organizations build the infrastructure behind enterprise learning and
-                  collaboration platforms. I love working with teams that know something needs to change but
-                  aren&rsquo;t quite sure where to start or which tools will actually serve them well.
+                  I build and govern the platforms organizations run on, and I&rsquo;m just as comfortable executing the
+                  technical buildout myself as I am partnering with IT and leadership to turn business needs into governed,
+                  sustainable systems. Over 10+ years I&rsquo;ve led SharePoint strategy, designed information architecture
+                  and permissions models, and managed the migrations and infrastructure behind enterprise learning and
+                  collaboration systems, grounding decisions in research like learner-engagement and usability studies,
+                  A/B testing, and post-release reviews.
                 </p>
                 <button
                   onClick={() => setBioOpen(!bioOpen)}
@@ -153,13 +158,13 @@ export default function Home() {
                       className="overflow-hidden"
                     >
                       <div className="pt-5 space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                        <p>I&rsquo;m especially interested in working with organizations that are navigating infrastructure buildouts, enablement, and training, and that are trying to figure out which tech stacks will actually fit how they work. That question comes up constantly and it deserves a real process, not just a vendor recommendation.</p>
-                        <p>I lead infrastructure development and migrations for learning management systems, build out governance frameworks, and create the training and rollout documentation that helps teams actually adopt what gets built. I also use AI-enabled prototyping to model features and bridge the gap between technical and non-technical stakeholders before anything goes live.</p>
-                        <p>I&rsquo;m hands-on across the M365 stack (SharePoint, Teams, Learn 365, Zensai) and comfortable across a range of LMS platforms and API integrations.</p>
+                        <p>That range is the point. I bring a deep curiosity about how systems work and how to explain them so end users actually understand, and I use AI-enabled prototyping to model features before rollout so technical and non-technical people can see and test a tool early, long before anything goes live.</p>
+                        <p>Today I architect and govern an internal LMS environment inside the Microsoft 365 stack (SharePoint, Teams, Learn 365), owning the information architecture, permissions, and documentation standards behind how staff learning and institutional knowledge are stored and accessed, while driving usability and engagement research on a public, MOOC-style learning platform for educators. I evaluate and onboard new products against integration feasibility, governance alignment, and adoption risk, and recently secured full leadership budget approval in a single presentation.</p>
+                        <p>My path runs from molecular cell biology and the science classroom to learning experience design (M.S., LXD Excellence Award) and platform architecture, so I read both the technical system and the people who have to adopt it. Day to day I work across the M365 stack and a range of LMS platforms (Docebo, Canvas, Moodle, Learn 365), with lightweight backends in SQL, Supabase, Vercel, and GitHub.</p>
                         <div className="pt-3">
                           <p className="text-xs font-extrabold tracking-wide uppercase text-white mb-3">Core Skills</p>
                           <div className="flex flex-wrap gap-2">
-                            {["SharePoint Online","M365 Administration","LMS Administration","Power Automate","Power BI","Information Architecture","Content Migration","WCAG / ADA","API Integration","SCORM / xAPI","SQL","Supabase","Vercel","GitHub","Docebo","Canvas","Moodle","Notion","Scribe","Zendesk"].map(s => (
+                            {["SharePoint Online","M365 Governance","Information Architecture","Permissions & Access Models","Content Migration","Power Automate","Power BI","Power Platform","Records & Retention","WCAG / ADA","Usability Research","A/B Testing","Vendor Evaluation","API Integration","SCORM / xAPI","SQL","Supabase","Vercel","GitHub","Figma","Generative AI Prototyping","Docebo","Canvas","Moodle","Learn 365","Notion","Scribe","Zendesk"].map(s => (
                               <span key={s} className="text-xs px-2.5 py-1 rounded-full font-semibold"
                                 style={{ background: "rgba(173,225,251,0.08)", color: C.muted, border: `1px solid rgba(173,225,251,0.12)` }}>
                                 {s}
