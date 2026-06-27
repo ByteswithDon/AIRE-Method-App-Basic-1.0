@@ -130,7 +130,7 @@ export default function Home() {
               <div className="px-6 md:px-12 py-8 max-w-3xl">
                 <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: C.accent }}>About</p>
                 <p className="text-base font-bold text-white mb-3 leading-snug">
-                  Product &amp; platform technology specialist, the kind my teams call a unicorn.
+                  Platform and Technology Specialist
                 </p>
                 <p className="text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
                   I build and govern the platforms organizations run on, and I&rsquo;m just as comfortable executing the
