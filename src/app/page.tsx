@@ -26,19 +26,19 @@ const C = {
 const DIMENSIONS = [
   {
     letter: "A", name: "Approach", desc: "Vision & strategic stance", color: "#ADE1FB",
-    full: "This is about how your organization has defined where it's headed with technology. Do you have a documented strategy? Is leadership aligned on what responsible technology use actually looks like? That's what Approach is measuring.",
+    full: "This is about how your organization has defined where it's headed with AI and the technology around it. Do you have a documented stance? Is leadership aligned on what responsible use actually looks like? That's what Approach is measuring.",
   },
   {
-    letter: "I", name: "Implementation", desc: "Deployment & tooling", color: "#266CA9",
-    full: "This is where the rubber meets the road. Are tools actually deployed and in use? Is there a real process for evaluating and selecting them? Implementation is about whether decisions are turning into working systems that people actually use.",
+    letter: "I", name: "Implementation", desc: "Deployment & oversight", color: "#266CA9",
+    full: "This is where the rubber meets the road. Are tools actually deployed, monitored, and on an approved list? Is there a real process for evaluating and selecting them? Implementation is about whether decisions are turning into working systems people actually use — not shadow tools no one is watching.",
   },
   {
     letter: "R", name: "Responsibility", desc: "Ethics & privacy", color: "#ADE1FB",
-    full: "Technology use comes with real obligations. Responsibility looks at whether your organization has policies in place, handles data with care, and has oversight structures that keep things accountable. It's not just compliance. It's how you build trust.",
+    full: "AI and technology use comes with real obligations. Responsibility looks at whether your organization names data privacy as a priority, has signed agreements and a use policy, and has oversight that keeps things accountable. It's not just compliance. It's how you build trust.",
   },
   {
     letter: "E", name: "Enablement", desc: "Staff capacity & culture", color: "#266CA9",
-    full: "Tools don't adopt themselves. Enablement is about whether your people have the training, the support, and the confidence to actually use what's been put in front of them. That means programs, champions, and a culture where it's okay to try things and figure it out.",
+    full: "Tools don't adopt themselves. Enablement is about whether your people have the role-specific training, the support, and the confidence to actually use what's been put in front of them. That means programs, named points of contact, and a culture where it's okay to try things and figure it out.",
   },
 ];
 
@@ -212,7 +212,7 @@ export default function Home() {
             <div className="px-6 md:px-12 py-8 max-w-3xl">
               <p className="text-xs font-extrabold tracking-[0.18em] uppercase mb-4" style={{ color: "#266CA9" }}>Context &amp; Intent</p>
               <div className="space-y-3 text-sm leading-relaxed font-medium" style={{ color: C.muted }}>
-                <p>The AIRE Method grew out of a real problem I kept running into: teams in flat organizations adopting technology without a shared process, which meant duplicate subscriptions, misaligned rollouts, and people who never really got brought along.</p>
+                <p>The AIRE Method grew out of a real problem I kept running into across a wide range of organizations: teams adopting AI and technology without a shared process, which meant duplicate subscriptions, misaligned rollouts, shadow tools no one was watching, and people who never really got brought along. Almost every tool now has an AI component, so making these choices well matters more than ever.</p>
                 <p>It started as a Google Sheets evaluation tool I used to facilitate conversations with stakeholders. After presenting it at the <strong className="text-white">Learning Forward Winter Conference</strong> and watching leaders across sectors immediately recognize the gap it was filling, I decided to build it into something you could actually move through online.</p>
                 <p>This prototype shows how the framework works as an interactive tool. In a full production version, responses would live in Supabase and the scoring engine would generate tailored recommendations. <strong className="text-white">This demo is about the experience and the logic, not a live backend.</strong></p>
                 <p>I built it using AI-enabled prototyping (Claude + Claude Code) alongside my own platform and architecture background, which is exactly how I work with teams every day.</p>
@@ -227,7 +227,7 @@ export default function Home() {
         {/* Left */}
         <div className="flex flex-col justify-center px-6 md:px-12 py-20 max-w-2xl">
           <motion.p {...fade(0.1)} className="text-xs font-extrabold tracking-[0.24em] uppercase mb-6" style={{ color: C.accent }}>
-            Technology Readiness Diagnostic
+            AI &amp; Technology Readiness Diagnostic
           </motion.p>
 
           <motion.h1 {...fade(0.18)}
@@ -240,8 +240,10 @@ export default function Home() {
           </motion.h1>
 
           <motion.p {...fade(0.26)} className="text-base leading-relaxed max-w-md mb-10 font-medium" style={{ color: C.muted }}>
-            Measure your organization&rsquo;s readiness across the four dimensions
-            of technology adoption and get a structured 30-day correction pathway.
+            A 12-cell diagnostic that maps your organization&rsquo;s readiness across the four
+            AIRE&trade; stages and three GAP dimensions &mdash; then names your gaps and a 30-day
+            pathway. Built for AI governance, and it fits any technology adoption decision,
+            because almost every tool now carries an AI component.
           </motion.p>
 
           <motion.div {...fade(0.32)}>
