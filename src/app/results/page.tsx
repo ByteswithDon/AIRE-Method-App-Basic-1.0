@@ -343,7 +343,7 @@ export default function ResultsPage() {
               onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = C.accent}>
               <DownloadIcon /> {pdfBusy ? "Opening..." : "Download My Results (PDF)"}
             </button>
-            <a href="/AIRELabPlaybook-Facilitator%20Guide%20Sample%20V.5.6.28.pdf" download="AIRE-Lab-Playbook-Facilitator-Guide.pdf"
+            <a href="/AIRE-Companion-Guide.pdf" download="AIRE-Facilitator-Guide.pdf"
               className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 rounded-xl transition-all focus-ring"
               style={{ background: "rgba(173,225,251,0.08)", color: C.accent, border: `1px solid rgba(173,225,251,0.2)` }}
               onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(173,225,251,0.15)"}
